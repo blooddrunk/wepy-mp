@@ -3,7 +3,11 @@
   <view class="tw-bg-blue-400">{{ test }}</view>
 
   <view class="userinfo">
-    <image src="{{ userInfo.avatarUrl }}" background-size="cover" class="userinfo-avatar"></image>
+    <image src="{{ userInfo.avatarUrl }}" class="userinfo-avatar"></image>
     <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
   </view>
+
+  <van-button bind_init="_initComponent" type="warning" data-wpy-evt="5-7" bindtap="_proxy">TEST</van-button>
+  <van-toast bind_init="_initComponent" id="van-toast"></van-toast>
+  <van-toast bind_init="_initComponent" id="van-dialog"></van-toast>
 </view>

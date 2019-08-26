@@ -1,4 +1,3 @@
-console.log('tailwind engaged');
 module.exports = {
   prefix: 'tw-',
   separator: '_',

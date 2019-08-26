@@ -20,6 +20,7 @@ env = Object.entries(env).reduce((acc, [key, value]) => {
   acc[`process.env.${key}`] = JSON.stringify(value);
   return acc;
 }, {});
+env[`process.env.NODE_ENV`] = JSON.stringify(process.env.NODE_ENV);
 
 module.exports = {
   wpyExt: '.vue',

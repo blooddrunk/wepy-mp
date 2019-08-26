@@ -14,9 +14,10 @@
 
 <script>
 import wepy from '@wepy/core';
-import eventHub from './common/eventHub';
+import promisify from '@wepy/use-promisify';
 import vuex from '@wepy/x';
 
+wepy.use(promisify);
 wepy.use(vuex);
 
 wepy.app({
