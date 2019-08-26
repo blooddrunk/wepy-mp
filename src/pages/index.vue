@@ -6,14 +6,17 @@
       <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover" />
       <div class="userinfo-nickname">{{ userInfo.nickName }}</div>
     </div>
+
+    <van-button type="warning">TEST</van-button>
   </div>
 </template>
 
 <config>
 {
-    navigationBarTitleText: 'WePY 2.0 Feature Demo',
-    usingComponents: {
-    }
+  navigationBarTitleText: 'WePY 2.0 Feature Demo',
+  usingComponents: {
+    'van-button': 'module:vant-weapp/dist/button/index',
+  }
 }
 </config>
 
