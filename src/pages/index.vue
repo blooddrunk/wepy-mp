@@ -8,6 +8,7 @@
     </div>
 
     <van-button type="warning" @tap="handleClick">TEST</van-button>
+
     <van-toast id="van-toast"></van-toast>
     <van-toast id="van-dialog"></van-toast>
   </div>
