@@ -1,0 +1,50 @@
+console.log('tailwind engaged');
+module.exports = {
+  prefix: 'tw-',
+  separator: '_',
+  important: true,
+
+  theme: {
+    extend: {},
+  },
+
+  variants: [],
+
+  plugins: [],
+
+  corePlugins: [
+    'alignContent',
+    'alignItems',
+    'alignSelf',
+    'alignContent',
+    'appearance',
+    'backgroundAttachment',
+    'backgroundColor',
+    'backgroundPosition',
+    'backgroundRepeat',
+    'backgroundSize',
+    'borderCollapse',
+    'borderColor',
+    'borderRadius',
+    'borderStyle',
+    'borderWidth',
+    'boxShadow',
+    'display',
+    'flex',
+    'flexDirection',
+    'flexGrow',
+    'flexShrink',
+    'flexWrap',
+    'fontSize',
+    'fontStyle',
+    'fontWeight',
+    'justifyContent',
+    'margin',
+    'opacity',
+    'outline',
+    'padding',
+    'position',
+    'textAlign',
+    'textColor',
+  ],
+};

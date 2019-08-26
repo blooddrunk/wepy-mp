@@ -1,0 +1,9 @@
+
+<view class="container">
+  <view class="tw-bg-blue-400">{{ test }}</view>
+
+  <view class="userinfo">
+    <image src="{{ userInfo.avatarUrl }}" background-size="cover" class="userinfo-avatar"></image>
+    <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+  </view>
+</view>
