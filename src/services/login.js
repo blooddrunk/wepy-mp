@@ -14,7 +14,7 @@ const onLoginFailure = async error => {
   });
 
   Wepy.wx.navigateTo({
-    navigateTo: 'pages/index',
+    url: 'pages/index',
   });
 
   if (isDev) {
