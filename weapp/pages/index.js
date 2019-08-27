@@ -1,14 +1,14 @@
 "use strict";
 
-var _regeneratorRuntime2 = _interopRequireDefault(require('../vendor.js')(8));
+var _regeneratorRuntime2 = _interopRequireDefault(require('../vendor.js')(13));
 
-var _core = _interopRequireDefault(require('../vendor.js')(1));
+var _core = _interopRequireDefault(require('../vendor.js')(0));
 
-var _toast = _interopRequireDefault(require('../vendor.js')(6));
+var _toast = _interopRequireDefault(require('../vendor.js')(5));
 
 var _login = _interopRequireDefault(require('../services/login.js'));
 
-var _request = _interopRequireDefault(require('../services/request.js'));
+var _withAsyncData = _interopRequireDefault(require('../mixins/withAsyncData.js'));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17,6 +17,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 _core.default.page({
+  mixins: [(0, _withAsyncData.default)(['list'])],
   data: {
     userInfo: {
       nickName: '加载中...'
@@ -66,7 +67,7 @@ _core.default.page({
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              (0, _request.default)({
+              this.fetchAsyncData('list', {
                 url: 'https://hn.algolia.com/api/v1/search',
                 __needAuth: false,
                 transformData: function transformData(_ref) {
@@ -80,7 +81,7 @@ _core.default.page({
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, this);
     }));
 
     function ready() {
@@ -89,14 +90,42 @@ _core.default.page({
 
     return ready;
   }()
-}, {info: {"components":{"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"5-7":["tap"]}}, handlers: {'5-7': {"tap": function proxy () {
+}, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"24-0":["tap"]}}, handlers: {'24-0': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleClick($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"5-7":["tap"]}}, handlers: {'5-7': {"tap": function proxy () {
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"24-0":["tap"]}}, handlers: {'24-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"24-0":["tap"]}}, handlers: {'24-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"24-0":["tap"]}}, handlers: {'24-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"24-0":["tap"]}}, handlers: {'24-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"24-0":["tap"]}}, handlers: {'24-0': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {

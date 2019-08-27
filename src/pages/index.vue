@@ -9,6 +9,8 @@
 
     <van-button type="warning" @tap="handleClick">TEST</van-button>
 
+    <simple-list :items="asyncData.list.value" :loading="asyncData.list.loading"></simple-list>
+
     <van-toast id="van-toast"></van-toast>
     <van-toast id="van-dialog"></van-toast>
   </div>
@@ -21,6 +23,7 @@
     'van-button': 'module:vant-weapp/lib/button',
     'van-toast': 'module:vant-weapp/lib/toast',
     'van-dialog': 'module:vant-weapp/lib/dialog',
+    'simple-list': '~@/components/simple-list'
   }
 }
 </config>
@@ -30,9 +33,11 @@ import wepy from '@wepy/core';
 import Toast from 'vant-weapp/lib/toast/toast';
 
 import login from '@/services/login';
-import request from '@/services/request';
+import withAsyncData from '@/mixins/withAsyncData';
 
 wepy.page({
+  mixins: [withAsyncData(['list'])],
+
   data: {
     userInfo: {
       nickName: '加载中...',
@@ -54,7 +59,7 @@ wepy.page({
   },
 
   async ready() {
-    request({
+    this.fetchAsyncData('list', {
       url: 'https://hn.algolia.com/api/v1/search',
       __needAuth: false,
       transformData: ({ hits }) => hits,

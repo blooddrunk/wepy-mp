@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var utils_1 = require('../../../../vendor.js')(5);
+var utils_1 = require('../../../../vendor.js')(4);
 
 var getClassNames = function getClassNames(name) {
   return {

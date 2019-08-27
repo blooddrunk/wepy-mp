@@ -2,6 +2,7 @@
     "navigationBarTitleText": "WePY 2.0 Feature Demo",
     "component": true,
     "usingComponents": {
+        "simple-list": "../components/simple-list",
         "van-button": "../$vendor/vant-weapp/lib/button/index",
         "van-toast": "../$vendor/vant-weapp/lib/toast/index",
         "van-dialog": "../$vendor/vant-weapp/lib/dialog/index"

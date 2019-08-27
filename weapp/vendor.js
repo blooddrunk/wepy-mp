@@ -34,229 +34,7 @@ var process = { env: {} };
    return __wepy_require;
 })([
 /***** module 0 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/@wepy/use-promisify/dist/index.js *****/
-function(module, exports, __wepy_require) {'use strict';
-
-/**
- * Promisify a callback function
- * @param  {Function} fn     callback function
- * @param  {Object}   caller caller
- * @param  {String}   type   weapp-style|error-first, default to weapp-style
- * @return {Function}        promisified function
- */
-var promisify = function (fn, caller, type) {
-  if ( type === void 0 ) type = 'weapp-style';
-
-  return function () {
-    var args = [], len = arguments.length;
-    while ( len-- ) args[ len ] = arguments[ len ];
-
-    return new Promise(function (resolve, reject) {
-      switch (type) {
-        case 'weapp-style':
-          fn.call(caller, Object.assign({}, args[0],
-            {
-              success: function success (res) {
-                resolve(res);
-              },
-              fail: function fail (err) {
-                reject(err);
-              }
-            }));
-          break;
-        case 'weapp-fix':
-          fn.apply(caller, args.concat(resolve).concat(reject));
-          break;
-        case 'error-first':
-          fn.apply(caller, args.concat( [function (err, res) { return (err ? reject(err) : resolve(res)); }])
-          );
-          break;
-      }
-    });
-  };
-};
-
-// The methods no need to promisify
-var noPromiseMethods = [
-  // 媒体
-  'stopRecord',
-  'getRecorderManager',
-  'pauseVoice',
-  'stopVoice',
-  'pauseBackgroundAudio',
-  'stopBackgroundAudio',
-  'getBackgroundAudioManager',
-  'createAudioContext',
-  'createInnerAudioContext',
-  'createVideoContext',
-  'createCameraContext',
-
-  // 位置
-  'createMapContext',
-
-  // 设备
-  'canIUse',
-  'startAccelerometer',
-  'stopAccelerometer',
-  'startCompass',
-  'stopCompass',
-  'onBLECharacteristicValueChange',
-  'onBLEConnectionStateChange',
-
-  // 界面
-  'hideToast',
-  'hideLoading',
-  'showNavigationBarLoading',
-  'hideNavigationBarLoading',
-  'navigateBack',
-  'createAnimation',
-  'pageScrollTo',
-  'createSelectorQuery',
-  'createCanvasContext',
-  'createContext',
-  'drawCanvas',
-  'hideKeyboard',
-  'stopPullDownRefresh',
-
-  // 拓展接口
-  'arrayBufferToBase64',
-  'base64ToArrayBuffer'
-];
-
-var simplifyArgs = {
-  // network
-  'request': 'url',
-  'downloadFile': 'url',
-  'connectSocket': 'url',
-  'sendSocketMessage': 'data',
-
-  // media
-  'previewImage': 'urls',
-  'getImageInfo': 'src',
-  'saveImageToPhotosAlbum': 'filePath',
-  'playVoice': 'filePath',
-  'playBackgroundAudio': 'dataUrl',
-  'seekBackgroundAudio': 'position',
-  'saveVideoToPhotosAlbum': 'filePath',
-
-  // files
-  'saveFile': 'tempFilePath',
-  'getFileInfo': 'filePath',
-  'getSavedFileInfo': 'filePath',
-  'removeSavedFile': 'filePath',
-  'openDocument': 'filePath',
-
-  // device
-  'setStorage': 'key,data',
-  'getStorage': 'key',
-  'removeStorage': 'key',
-  'openLocation': 'latitude,longitude',
-  'makePhoneCall': 'phoneNumber',
-  'setClipboardData': 'data',
-  'getConnectedBluetoothDevices': 'services',
-  'createBLEConnection': 'deviceId',
-  'closeBLEConnection': 'deviceId',
-  'getBLEDeviceServices': 'deviceId',
-  'startBeaconDiscovery': 'uuids',
-  'setScreenBrightness': 'value',
-  'setKeepScreenOn': 'keepScreenOn',
-
-  // screen
-  'showToast': 'title',
-  'showLoading': 'title,mask',
-  'showModal': 'title,content',
-  'showActionSheet': 'itemList,itemColor',
-  'setNavigationBarTitle': 'title',
-  'setNavigationBarColor': 'frontColor,backgroundColor',
-
-  // tabBar
-  'setTabBarBadge': 'index,text',
-  'removeTabBarBadge': 'idnex',
-  'showTabBarRedDot': 'index',
-  'hideTabBarRedDot': 'index',
-  'showTabBar': 'animation',
-  'hideTabBar': 'animation',
-
-  // topBar
-  'setTopBarText': 'text',
-
-  // navigator
-  'navigateTo': 'url',
-  'redirectTo': 'url',
-  'redirectTo': 'url',
-  'navigateBack': 'delta',
-  'reLaunch': 'url',
-
-  // pageScroll
-  'pageScrollTo': 'scrollTop,duration',
-};
-
-var makeObj = function (arr) {
-  var obj = {};
-  arr.forEach(function (v) { return obj[v] = 1; });
-  return obj;
-};
-
-/*
- * wx basic api promisify
- * useage:
- * wepy.use(wepy-use-promisify)
- * wepy.use(wepy-use-promisify([nopromise1, nopromise2]));
- * wepy.use(wepy-use-promisify({nopromise1: true, promise: false}));
- * wepy.login().then().catch()
- */
-var index = {
-  install: function install (wepy, removeFromPromisify) {
-    var _wx = (wepy.wx = wepy.wx || Object.assign({}, wx));
-
-    var noPromiseMap = {};
-    if (removeFromPromisify) {
-      if (Array.isArray(removeFromPromisify)) {
-        noPromiseMap = makeObj(noPromiseMethods.concat(removeFromPromisify));
-      } else {
-        noPromiseMap = Object.assign({}, makeObj(noPromiseMethods), removeFromPromisify);
-      }
-    }
-
-    Object.keys(_wx).forEach(function (key) {
-      if (!noPromiseMap[key] && key.substr(0, 2) !== 'on' && key.substr(-4) !== 'Sync') {
-        _wx[key] = promisify(function () {
-          var args = [], len = arguments.length;
-          while ( len-- ) args[ len ] = arguments[ len ];
-
-          var fixArgs = args[0];
-          var failFn = args.pop();
-          var successFn = args.pop();
-          if (simplifyArgs[key] && typeof fixArgs !== 'object') {
-            fixArgs = {};
-            var ps = simplifyArgs[key];
-            if (args.length) {
-              ps.split(',').forEach(function (p, i) {
-                if (args[i]) {
-                  fixArgs[p] = args[i];
-                }
-              });
-            }
-          }
-          fixArgs.success = successFn;
-          fixArgs.fail = failFn;
-
-          return wx[key].call(wx, fixArgs);
-        }, _wx, 'weapp-fix');
-      }
-    });
-
-    wepy.promisify = promisify;
-  }
-}
-
-module.exports = index;
-
-},/***** module 0 end *****/
-
-
-/***** module 1 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/@wepy/core/dist/wepy.js *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/@wepy/core/dist/wepy.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 // can we use __proto__?
@@ -2907,11 +2685,581 @@ wepy.version = "2.0.0-alpha.9";
 
 module.exports = wepy;
 
+},/***** module 0 end *****/
+
+
+/***** module 1 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/@wepy/use-promisify/dist/index.js *****/
+function(module, exports, __wepy_require) {'use strict';
+
+/**
+ * Promisify a callback function
+ * @param  {Function} fn     callback function
+ * @param  {Object}   caller caller
+ * @param  {String}   type   weapp-style|error-first, default to weapp-style
+ * @return {Function}        promisified function
+ */
+var promisify = function (fn, caller, type) {
+  if ( type === void 0 ) type = 'weapp-style';
+
+  return function () {
+    var args = [], len = arguments.length;
+    while ( len-- ) args[ len ] = arguments[ len ];
+
+    return new Promise(function (resolve, reject) {
+      switch (type) {
+        case 'weapp-style':
+          fn.call(caller, Object.assign({}, args[0],
+            {
+              success: function success (res) {
+                resolve(res);
+              },
+              fail: function fail (err) {
+                reject(err);
+              }
+            }));
+          break;
+        case 'weapp-fix':
+          fn.apply(caller, args.concat(resolve).concat(reject));
+          break;
+        case 'error-first':
+          fn.apply(caller, args.concat( [function (err, res) { return (err ? reject(err) : resolve(res)); }])
+          );
+          break;
+      }
+    });
+  };
+};
+
+// The methods no need to promisify
+var noPromiseMethods = [
+  // 媒体
+  'stopRecord',
+  'getRecorderManager',
+  'pauseVoice',
+  'stopVoice',
+  'pauseBackgroundAudio',
+  'stopBackgroundAudio',
+  'getBackgroundAudioManager',
+  'createAudioContext',
+  'createInnerAudioContext',
+  'createVideoContext',
+  'createCameraContext',
+
+  // 位置
+  'createMapContext',
+
+  // 设备
+  'canIUse',
+  'startAccelerometer',
+  'stopAccelerometer',
+  'startCompass',
+  'stopCompass',
+  'onBLECharacteristicValueChange',
+  'onBLEConnectionStateChange',
+
+  // 界面
+  'hideToast',
+  'hideLoading',
+  'showNavigationBarLoading',
+  'hideNavigationBarLoading',
+  'navigateBack',
+  'createAnimation',
+  'pageScrollTo',
+  'createSelectorQuery',
+  'createCanvasContext',
+  'createContext',
+  'drawCanvas',
+  'hideKeyboard',
+  'stopPullDownRefresh',
+
+  // 拓展接口
+  'arrayBufferToBase64',
+  'base64ToArrayBuffer'
+];
+
+var simplifyArgs = {
+  // network
+  'request': 'url',
+  'downloadFile': 'url',
+  'connectSocket': 'url',
+  'sendSocketMessage': 'data',
+
+  // media
+  'previewImage': 'urls',
+  'getImageInfo': 'src',
+  'saveImageToPhotosAlbum': 'filePath',
+  'playVoice': 'filePath',
+  'playBackgroundAudio': 'dataUrl',
+  'seekBackgroundAudio': 'position',
+  'saveVideoToPhotosAlbum': 'filePath',
+
+  // files
+  'saveFile': 'tempFilePath',
+  'getFileInfo': 'filePath',
+  'getSavedFileInfo': 'filePath',
+  'removeSavedFile': 'filePath',
+  'openDocument': 'filePath',
+
+  // device
+  'setStorage': 'key,data',
+  'getStorage': 'key',
+  'removeStorage': 'key',
+  'openLocation': 'latitude,longitude',
+  'makePhoneCall': 'phoneNumber',
+  'setClipboardData': 'data',
+  'getConnectedBluetoothDevices': 'services',
+  'createBLEConnection': 'deviceId',
+  'closeBLEConnection': 'deviceId',
+  'getBLEDeviceServices': 'deviceId',
+  'startBeaconDiscovery': 'uuids',
+  'setScreenBrightness': 'value',
+  'setKeepScreenOn': 'keepScreenOn',
+
+  // screen
+  'showToast': 'title',
+  'showLoading': 'title,mask',
+  'showModal': 'title,content',
+  'showActionSheet': 'itemList,itemColor',
+  'setNavigationBarTitle': 'title',
+  'setNavigationBarColor': 'frontColor,backgroundColor',
+
+  // tabBar
+  'setTabBarBadge': 'index,text',
+  'removeTabBarBadge': 'idnex',
+  'showTabBarRedDot': 'index',
+  'hideTabBarRedDot': 'index',
+  'showTabBar': 'animation',
+  'hideTabBar': 'animation',
+
+  // topBar
+  'setTopBarText': 'text',
+
+  // navigator
+  'navigateTo': 'url',
+  'redirectTo': 'url',
+  'redirectTo': 'url',
+  'navigateBack': 'delta',
+  'reLaunch': 'url',
+
+  // pageScroll
+  'pageScrollTo': 'scrollTop,duration',
+};
+
+var makeObj = function (arr) {
+  var obj = {};
+  arr.forEach(function (v) { return obj[v] = 1; });
+  return obj;
+};
+
+/*
+ * wx basic api promisify
+ * useage:
+ * wepy.use(wepy-use-promisify)
+ * wepy.use(wepy-use-promisify([nopromise1, nopromise2]));
+ * wepy.use(wepy-use-promisify({nopromise1: true, promise: false}));
+ * wepy.login().then().catch()
+ */
+var index = {
+  install: function install (wepy, removeFromPromisify) {
+    var _wx = (wepy.wx = wepy.wx || Object.assign({}, wx));
+
+    var noPromiseMap = {};
+    if (removeFromPromisify) {
+      if (Array.isArray(removeFromPromisify)) {
+        noPromiseMap = makeObj(noPromiseMethods.concat(removeFromPromisify));
+      } else {
+        noPromiseMap = Object.assign({}, makeObj(noPromiseMethods), removeFromPromisify);
+      }
+    }
+
+    Object.keys(_wx).forEach(function (key) {
+      if (!noPromiseMap[key] && key.substr(0, 2) !== 'on' && key.substr(-4) !== 'Sync') {
+        _wx[key] = promisify(function () {
+          var args = [], len = arguments.length;
+          while ( len-- ) args[ len ] = arguments[ len ];
+
+          var fixArgs = args[0];
+          var failFn = args.pop();
+          var successFn = args.pop();
+          if (simplifyArgs[key] && typeof fixArgs !== 'object') {
+            fixArgs = {};
+            var ps = simplifyArgs[key];
+            if (args.length) {
+              ps.split(',').forEach(function (p, i) {
+                if (args[i]) {
+                  fixArgs[p] = args[i];
+                }
+              });
+            }
+          }
+          fixArgs.success = successFn;
+          fixArgs.fail = failFn;
+
+          return wx[key].call(wx, fixArgs);
+        }, _wx, 'weapp-fix');
+      }
+    });
+
+    wepy.promisify = promisify;
+  }
+}
+
+module.exports = index;
+
 },/***** module 1 end *****/
 
 
 /***** module 2 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/vuex/dist/vuex.common.js *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/vant-weapp/lib/dialog/dialog.js *****/
+function(module, exports, __wepy_require) {"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var queue = [];
+function getContext() {
+    var pages = getCurrentPages();
+    return pages[pages.length - 1];
+}
+var Dialog = function (options) {
+    options = __assign({}, Dialog.currentOptions, options);
+    return new Promise(function (resolve, reject) {
+        var context = options.context || getContext();
+        var dialog = context.selectComponent(options.selector);
+        delete options.context;
+        delete options.selector;
+        if (dialog) {
+            dialog.set(__assign({ onCancel: reject, onConfirm: resolve }, options));
+            queue.push(dialog);
+        }
+        else {
+            console.warn('未找到 van-dialog 节点，请确认 selector 及 context 是否正确');
+        }
+    });
+};
+Dialog.defaultOptions = {
+    show: true,
+    title: '',
+    message: '',
+    zIndex: 100,
+    overlay: true,
+    className: '',
+    customStyle: '',
+    asyncClose: false,
+    messageAlign: '',
+    transition: 'scale',
+    selector: '#van-dialog',
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    showConfirmButton: true,
+    showCancelButton: false,
+    closeOnClickOverlay: false,
+    confirmButtonOpenType: ''
+};
+Dialog.alert = Dialog;
+Dialog.confirm = function (options) {
+    return Dialog(__assign({ showCancelButton: true }, options));
+};
+Dialog.close = function () {
+    queue.forEach(function (dialog) {
+        dialog.close();
+    });
+    queue = [];
+};
+Dialog.stopLoading = function () {
+    queue.forEach(function (dialog) {
+        dialog.stopLoading();
+    });
+};
+Dialog.setDefaultOptions = function (options) {
+    Object.assign(Dialog.currentOptions, options);
+};
+Dialog.resetDefaultOptions = function () {
+    Dialog.currentOptions = __assign({}, Dialog.defaultOptions);
+};
+Dialog.resetDefaultOptions();
+exports.default = Dialog;
+
+},/***** module 2 end *****/
+
+
+/***** module 3 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/isObjectLike.js *****/
+function(module, exports, __wepy_require) {/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
+},/***** module 3 end *****/
+
+
+/***** module 4 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/vant-weapp/lib/common/utils.js *****/
+function(module, exports, __wepy_require) {"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function isDef(value) {
+    return value !== undefined && value !== null;
+}
+exports.isDef = isDef;
+function isObj(x) {
+    var type = typeof x;
+    return x !== null && (type === 'object' || type === 'function');
+}
+exports.isObj = isObj;
+function isNumber(value) {
+    return /^\d+$/.test(value);
+}
+exports.isNumber = isNumber;
+function range(num, min, max) {
+    return Math.min(Math.max(num, min), max);
+}
+exports.range = range;
+function nextTick(fn) {
+    setTimeout(function () {
+        fn();
+    }, 1000 / 30);
+}
+exports.nextTick = nextTick;
+
+},/***** module 4 end *****/
+
+
+/***** module 5 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/vant-weapp/lib/toast/toast.js *****/
+function(module, exports, __wepy_require) {"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __wepy_require(4);
+var defaultOptions = {
+    type: 'text',
+    mask: false,
+    message: '',
+    show: true,
+    zIndex: 1000,
+    duration: 3000,
+    position: 'middle',
+    forbidClick: false,
+    loadingType: 'circular',
+    selector: '#van-toast'
+};
+var queue = [];
+var currentOptions = __assign({}, defaultOptions);
+function parseOptions(message) {
+    return utils_1.isObj(message) ? message : { message: message };
+}
+function getContext() {
+    var pages = getCurrentPages();
+    return pages[pages.length - 1];
+}
+function Toast(toastOptions) {
+    var options = __assign({}, currentOptions, parseOptions(toastOptions));
+    var context = options.context || getContext();
+    var toast = context.selectComponent(options.selector);
+    if (!toast) {
+        console.warn('未找到 van-toast 节点，请确认 selector 及 context 是否正确');
+        return;
+    }
+    delete options.context;
+    delete options.selector;
+    toast.clear = function () {
+        toast.set({ show: false });
+        if (options.onClose) {
+            options.onClose();
+        }
+    };
+    queue.push(toast);
+    toast.set(options);
+    clearTimeout(toast.timer);
+    if (options.duration > 0) {
+        toast.timer = setTimeout(function () {
+            toast.clear();
+            queue = queue.filter(function (item) { return item !== toast; });
+        }, options.duration);
+    }
+    return toast;
+}
+var createMethod = function (type) { return function (options) {
+    return Toast(__assign({ type: type }, parseOptions(options)));
+}; };
+Toast.loading = createMethod('loading');
+Toast.success = createMethod('success');
+Toast.fail = createMethod('fail');
+Toast.clear = function () {
+    queue.forEach(function (toast) {
+        toast.clear();
+    });
+    queue = [];
+};
+Toast.setDefaultOptions = function (options) {
+    Object.assign(currentOptions, options);
+};
+Toast.resetDefaultOptions = function () {
+    currentOptions = __assign({}, defaultOptions);
+};
+exports.default = Toast;
+
+},/***** module 5 end *****/
+
+
+/***** module 6 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_getRawTag.js *****/
+function(module, exports, __wepy_require) {var Symbol = __wepy_require(16);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+module.exports = getRawTag;
+
+},/***** module 6 end *****/
+
+
+/***** module 7 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_objectToString.js *****/
+function(module, exports, __wepy_require) {/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+module.exports = objectToString;
+
+},/***** module 7 end *****/
+
+
+/***** module 8 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_overArg.js *****/
+function(module, exports, __wepy_require) {/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+module.exports = overArg;
+
+},/***** module 8 end *****/
+
+
+/***** module 9 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_getPrototype.js *****/
+function(module, exports, __wepy_require) {var overArg = __wepy_require(8);
+
+/** Built-in value references. */
+var getPrototype = overArg(Object.getPrototypeOf, Object);
+
+module.exports = getPrototype;
+
+},/***** module 9 end *****/
+
+
+/***** module 10 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/vuex/dist/vuex.common.js *****/
 function(module, exports, __wepy_require) {/**
  * vuex v3.1.1
  * (c) 2019 Evan You
@@ -3924,16 +4272,16 @@ var index = {
 
 module.exports = index;
 
-},/***** module 2 end *****/
+},/***** module 10 end *****/
 
 
-/***** module 3 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/@wepy/x/dist/index.js *****/
+/***** module 11 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/@wepy/x/dist/index.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var vuex = __wepy_require(2);
+var vuex = __wepy_require(10);
 
 function wepyInstall (wepy) {
   vuex.install(wepy);
@@ -3977,211 +4325,11 @@ exports.createNamespacedHelpers = vuex.createNamespacedHelpers;
 exports.default = index;
 exports.install = wepyInstall;
 
-},/***** module 3 end *****/
+},/***** module 11 end *****/
 
 
-/***** module 4 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/vant-weapp/lib/dialog/dialog.js *****/
-function(module, exports, __wepy_require) {"use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var queue = [];
-function getContext() {
-    var pages = getCurrentPages();
-    return pages[pages.length - 1];
-}
-var Dialog = function (options) {
-    options = __assign({}, Dialog.currentOptions, options);
-    return new Promise(function (resolve, reject) {
-        var context = options.context || getContext();
-        var dialog = context.selectComponent(options.selector);
-        delete options.context;
-        delete options.selector;
-        if (dialog) {
-            dialog.set(__assign({ onCancel: reject, onConfirm: resolve }, options));
-            queue.push(dialog);
-        }
-        else {
-            console.warn('未找到 van-dialog 节点，请确认 selector 及 context 是否正确');
-        }
-    });
-};
-Dialog.defaultOptions = {
-    show: true,
-    title: '',
-    message: '',
-    zIndex: 100,
-    overlay: true,
-    className: '',
-    customStyle: '',
-    asyncClose: false,
-    messageAlign: '',
-    transition: 'scale',
-    selector: '#van-dialog',
-    confirmButtonText: '确认',
-    cancelButtonText: '取消',
-    showConfirmButton: true,
-    showCancelButton: false,
-    closeOnClickOverlay: false,
-    confirmButtonOpenType: ''
-};
-Dialog.alert = Dialog;
-Dialog.confirm = function (options) {
-    return Dialog(__assign({ showCancelButton: true }, options));
-};
-Dialog.close = function () {
-    queue.forEach(function (dialog) {
-        dialog.close();
-    });
-    queue = [];
-};
-Dialog.stopLoading = function () {
-    queue.forEach(function (dialog) {
-        dialog.stopLoading();
-    });
-};
-Dialog.setDefaultOptions = function (options) {
-    Object.assign(Dialog.currentOptions, options);
-};
-Dialog.resetDefaultOptions = function () {
-    Dialog.currentOptions = __assign({}, Dialog.defaultOptions);
-};
-Dialog.resetDefaultOptions();
-exports.default = Dialog;
-
-},/***** module 4 end *****/
-
-
-/***** module 5 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/vant-weapp/lib/common/utils.js *****/
-function(module, exports, __wepy_require) {"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function isDef(value) {
-    return value !== undefined && value !== null;
-}
-exports.isDef = isDef;
-function isObj(x) {
-    var type = typeof x;
-    return x !== null && (type === 'object' || type === 'function');
-}
-exports.isObj = isObj;
-function isNumber(value) {
-    return /^\d+$/.test(value);
-}
-exports.isNumber = isNumber;
-function range(num, min, max) {
-    return Math.min(Math.max(num, min), max);
-}
-exports.range = range;
-function nextTick(fn) {
-    setTimeout(function () {
-        fn();
-    }, 1000 / 30);
-}
-exports.nextTick = nextTick;
-
-},/***** module 5 end *****/
-
-
-/***** module 6 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/vant-weapp/lib/toast/toast.js *****/
-function(module, exports, __wepy_require) {"use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var utils_1 = __wepy_require(5);
-var defaultOptions = {
-    type: 'text',
-    mask: false,
-    message: '',
-    show: true,
-    zIndex: 1000,
-    duration: 3000,
-    position: 'middle',
-    forbidClick: false,
-    loadingType: 'circular',
-    selector: '#van-toast'
-};
-var queue = [];
-var currentOptions = __assign({}, defaultOptions);
-function parseOptions(message) {
-    return utils_1.isObj(message) ? message : { message: message };
-}
-function getContext() {
-    var pages = getCurrentPages();
-    return pages[pages.length - 1];
-}
-function Toast(toastOptions) {
-    var options = __assign({}, currentOptions, parseOptions(toastOptions));
-    var context = options.context || getContext();
-    var toast = context.selectComponent(options.selector);
-    if (!toast) {
-        console.warn('未找到 van-toast 节点，请确认 selector 及 context 是否正确');
-        return;
-    }
-    delete options.context;
-    delete options.selector;
-    toast.clear = function () {
-        toast.set({ show: false });
-        if (options.onClose) {
-            options.onClose();
-        }
-    };
-    queue.push(toast);
-    toast.set(options);
-    clearTimeout(toast.timer);
-    if (options.duration > 0) {
-        toast.timer = setTimeout(function () {
-            toast.clear();
-            queue = queue.filter(function (item) { return item !== toast; });
-        }, options.duration);
-    }
-    return toast;
-}
-var createMethod = function (type) { return function (options) {
-    return Toast(__assign({ type: type }, parseOptions(options)));
-}; };
-Toast.loading = createMethod('loading');
-Toast.success = createMethod('success');
-Toast.fail = createMethod('fail');
-Toast.clear = function () {
-    queue.forEach(function (toast) {
-        toast.clear();
-    });
-    queue = [];
-};
-Toast.setDefaultOptions = function (options) {
-    Object.assign(currentOptions, options);
-};
-Toast.resetDefaultOptions = function () {
-    currentOptions = __assign({}, defaultOptions);
-};
-exports.default = Toast;
-
-},/***** module 6 end *****/
-
-
-/***** module 7 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/regenerator-runtime/runtime.js *****/
+/***** module 12 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/regenerator-runtime/runtime.js *****/
 function(module, exports, __wepy_require) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -4910,11 +5058,11 @@ function(module, exports, __wepy_require) {/**
   (function() { return this })() || Function("return this")()
 );
 
-},/***** module 7 end *****/
+},/***** module 12 end *****/
 
 
-/***** module 8 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/regenerator-runtime/runtime-module.js *****/
+/***** module 13 start *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/regenerator-runtime/runtime-module.js *****/
 function(module, exports, __wepy_require) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -4937,7 +5085,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __wepy_require(7);
+module.exports = __wepy_require(12);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -4951,159 +5099,11 @@ if (hadRuntime) {
   }
 }
 
-},/***** module 8 end *****/
-
-
-/***** module 9 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/isObjectLike.js *****/
-function(module, exports, __wepy_require) {/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-},/***** module 9 end *****/
-
-
-/***** module 10 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_getRawTag.js *****/
-function(module, exports, __wepy_require) {var Symbol = __wepy_require(16);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-module.exports = getRawTag;
-
-},/***** module 10 end *****/
-
-
-/***** module 11 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_objectToString.js *****/
-function(module, exports, __wepy_require) {/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-module.exports = objectToString;
-
-},/***** module 11 end *****/
-
-
-/***** module 12 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_overArg.js *****/
-function(module, exports, __wepy_require) {/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */
-function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
-}
-
-module.exports = overArg;
-
-},/***** module 12 end *****/
-
-
-/***** module 13 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_getPrototype.js *****/
-function(module, exports, __wepy_require) {var overArg = __wepy_require(12);
-
-/** Built-in value references. */
-var getPrototype = overArg(Object.getPrototypeOf, Object);
-
-module.exports = getPrototype;
-
 },/***** module 13 end *****/
 
 
 /***** module 14 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_freeGlobal.js *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_freeGlobal.js *****/
 function(module, exports, __wepy_require) {/** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 
@@ -5113,7 +5113,7 @@ module.exports = freeGlobal;
 
 
 /***** module 15 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_root.js *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_root.js *****/
 function(module, exports, __wepy_require) {var freeGlobal = __wepy_require(14);
 
 /** Detect free variable `self`. */
@@ -5128,7 +5128,7 @@ module.exports = root;
 
 
 /***** module 16 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_Symbol.js *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_Symbol.js *****/
 function(module, exports, __wepy_require) {var root = __wepy_require(15);
 
 /** Built-in value references. */
@@ -5140,10 +5140,10 @@ module.exports = Symbol;
 
 
 /***** module 17 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_baseGetTag.js *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_baseGetTag.js *****/
 function(module, exports, __wepy_require) {var Symbol = __wepy_require(16),
-    getRawTag = __wepy_require(10),
-    objectToString = __wepy_require(11);
+    getRawTag = __wepy_require(6),
+    objectToString = __wepy_require(7);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -5174,10 +5174,10 @@ module.exports = baseGetTag;
 
 
 /***** module 18 start *****/
-/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/isPlainObject.js *****/
+/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/isPlainObject.js *****/
 function(module, exports, __wepy_require) {var baseGetTag = __wepy_require(17),
-    getPrototype = __wepy_require(13),
-    isObjectLike = __wepy_require(9);
+    getPrototype = __wepy_require(9),
+    isObjectLike = __wepy_require(3);
 
 /** `Object#toString` result references. */
 var objectTag = '[object Object]';

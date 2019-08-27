@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var utils_1 = __wepy_require(5);
+var utils_1 = __wepy_require(4);
 var defaultOptions = {
     type: 'text',
     mask: false,

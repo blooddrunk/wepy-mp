@@ -16,9 +16,11 @@
 import wepy from '@wepy/core';
 import promisify from '@wepy/use-promisify';
 import vuex from '@wepy/x';
+import { plugin } from '@/services';
 
 wepy.use(promisify);
 wepy.use(vuex);
+wepy.use(plugin);
 
 wepy.app({
   hooks: {},
