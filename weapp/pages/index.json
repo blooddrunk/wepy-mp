@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "WePY 2.0 Feature Demo",
+    "navigationBarTitleText": "小程序",
     "component": true,
     "usingComponents": {
         "simple-list": "../components/simple-list",

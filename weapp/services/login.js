@@ -28,26 +28,23 @@ var onLoginFailure =
 function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
-  _regeneratorRuntime2.default.mark(function _callee(error) {
+  _regeneratorRuntime2.default.mark(function _callee(error, context) {
     return _regeneratorRuntime2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _toast.default.fail({
+              context: context,
               message: '登录失败！',
               mask: true,
               forbidClick: true
-            });
-
-            _core.default.wx.navigateTo({
-              navigateTo: 'pages/index'
             });
 
             if (isDev) {
               console.error(error);
             }
 
-          case 3:
+          case 2:
           case "end":
             return _context.stop();
         }
@@ -55,7 +52,7 @@ function () {
     }, _callee);
   }));
 
-  return function onLoginFailure(_x) {
+  return function onLoginFailure(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -65,7 +62,7 @@ var promptForUserInfo =
 function () {
   var _ref2 = _asyncToGenerator(
   /*#__PURE__*/
-  _regeneratorRuntime2.default.mark(function _callee2() {
+  _regeneratorRuntime2.default.mark(function _callee2(context) {
     var setting, response;
     return _regeneratorRuntime2.default.wrap(function _callee2$(_context2) {
       while (1) {
@@ -73,6 +70,7 @@ function () {
           case 0:
             _context2.next = 2;
             return _dialog.default.alert({
+              context: context,
               title: '提示',
               message: '不登录无法正常使用~\n\n请允许获取您的用户信息...',
               cancelText: '不了',
@@ -119,74 +117,82 @@ function () {
     }, _callee2, null, [[2, 16]]);
   }));
 
-  return function promptForUserInfo() {
+  return function promptForUserInfo(_x3) {
     return _ref2.apply(this, arguments);
   };
 }();
 
 var _default =
 /*#__PURE__*/
-_asyncToGenerator(
-/*#__PURE__*/
-_regeneratorRuntime2.default.mark(function _callee3() {
-  var code, response, userInfo, _response;
+function () {
+  var _ref3 = _asyncToGenerator(
+  /*#__PURE__*/
+  _regeneratorRuntime2.default.mark(function _callee3(context) {
+    var code, response, userInfo, _response;
 
-  return _regeneratorRuntime2.default.wrap(function _callee3$(_context3) {
-    while (1) {
-      switch (_context3.prev = _context3.next) {
-        case 0:
-          code = ''; // get login code
+    return _regeneratorRuntime2.default.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _core.default.wx.removeStorageSync(LOGIN_AUTH_KEY);
 
-          _context3.prev = 1;
-          _context3.next = 4;
-          return _core.default.wx.login();
+            code = ''; // get login code
 
-        case 4:
-          response = _context3.sent;
-          code = response.code;
-          _context3.next = 11;
-          break;
+            _context3.prev = 2;
+            _context3.next = 5;
+            return _core.default.wx.login();
 
-        case 8:
-          _context3.prev = 8;
-          _context3.t0 = _context3["catch"](1);
-          onLoginFailure(_context3.t0);
+          case 5:
+            response = _context3.sent;
+            code = response.code;
+            _context3.next = 12;
+            break;
 
-        case 11:
-          userInfo = null; // get userInfo
+          case 9:
+            _context3.prev = 9;
+            _context3.t0 = _context3["catch"](2);
+            onLoginFailure(_context3.t0, context);
 
-          _context3.prev = 12;
-          _context3.next = 15;
-          return _core.default.wx.getUserInfo();
+          case 12:
+            userInfo = null; // get userInfo
 
-        case 15:
-          _response = _context3.sent;
-          userInfo = _response.userInfo;
-          _context3.next = 22;
-          break;
+            _context3.prev = 13;
+            _context3.next = 16;
+            return _core.default.wx.getUserInfo();
 
-        case 19:
-          _context3.prev = 19;
-          _context3.t1 = _context3["catch"](12);
-          userInfo = promptForUserInfo();
+          case 16:
+            _response = _context3.sent;
+            userInfo = _response.userInfo;
+            _context3.next = 23;
+            break;
 
-        case 22:
-          if (!userInfo) {
-            onLoginFailure();
-          }
+          case 20:
+            _context3.prev = 20;
+            _context3.t1 = _context3["catch"](13);
+            userInfo = promptForUserInfo(context);
 
-          userInfo.code = code; // TODO: remote login
+          case 23:
+            if (!userInfo) {
+              onLoginFailure(new Error('用户未授权'), context);
+            }
 
-          _core.default.wx.setStorageSync(LOGIN_AUTH_KEY, 'get token from remote');
+            userInfo.code = code; // TODO: remote login
 
-          return _context3.abrupt("return", userInfo);
+            _core.default.wx.setStorageSync(LOGIN_AUTH_KEY, 'get token from remote');
 
-        case 26:
-        case "end":
-          return _context3.stop();
+            return _context3.abrupt("return", userInfo);
+
+          case 27:
+          case "end":
+            return _context3.stop();
+        }
       }
-    }
-  }, _callee3, null, [[1, 8], [12, 19]]);
-}));
+    }, _callee3, null, [[2, 9], [13, 20]]);
+  }));
+
+  return function (_x4) {
+    return _ref3.apply(this, arguments);
+  };
+}();
 
 exports.default = _default;

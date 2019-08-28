@@ -1,4 +1,4 @@
-import Wepy from '@wepy/core';
+import wepy from '@wepy/core';
 import Toast from 'vant-weapp/lib/toast/toast';
 import Dialog from 'vant-weapp/lib/dialog/dialog';
 
@@ -6,15 +6,12 @@ export const LOGIN_AUTH_KEY = 'LOGIN_AUTH_KEY';
 
 const isDev = process.env.NODE_ENV === 'development';
 
-const onLoginFailure = async error => {
+const onLoginFailure = async (error, context) => {
   Toast.fail({
+    context,
     message: '登录失败！',
     mask: true,
     forbidClick: true,
-  });
-
-  Wepy.wx.navigateTo({
-    url: 'pages/index',
   });
 
   if (isDev) {
@@ -22,8 +19,9 @@ const onLoginFailure = async error => {
   }
 };
 
-const promptForUserInfo = async () => {
+const promptForUserInfo = async context => {
   await Dialog.alert({
+    context,
     title: '提示',
     message: '不登录无法正常使用~\n\n请允许获取您的用户信息...',
     cancelText: '不了',
@@ -31,9 +29,9 @@ const promptForUserInfo = async () => {
   });
 
   try {
-    const setting = await Wepy.wx.openSetting();
+    const setting = await wepy.wx.openSetting();
     if (setting.authSetting['scope.userInfo']) {
-      const response = await Wepy.ex.getUserInfo();
+      const response = await wepy.ex.getUserInfo();
       return response.userInfo;
     } else {
       return null;
@@ -43,35 +41,37 @@ const promptForUserInfo = async () => {
   }
 };
 
-export default async () => {
+export default async context => {
+  wepy.wx.removeStorageSync(LOGIN_AUTH_KEY);
+
   let code = '';
 
   // get login code
   try {
-    const response = await Wepy.wx.login();
+    const response = await wepy.wx.login();
     code = response.code;
   } catch (error) {
-    onLoginFailure(error);
+    onLoginFailure(error, context);
   }
 
   let userInfo = null;
 
   // get userInfo
   try {
-    const response = await Wepy.wx.getUserInfo();
+    const response = await wepy.wx.getUserInfo();
     userInfo = response.userInfo;
   } catch (error) {
-    userInfo = promptForUserInfo();
+    userInfo = promptForUserInfo(context);
   }
 
   if (!userInfo) {
-    onLoginFailure();
+    onLoginFailure(new Error('用户未授权'), context);
   }
 
   userInfo.code = code;
 
   // TODO: remote login
-  Wepy.wx.setStorageSync(LOGIN_AUTH_KEY, 'get token from remote');
+  wepy.wx.setStorageSync(LOGIN_AUTH_KEY, 'get token from remote');
 
   return userInfo;
 };

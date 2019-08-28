@@ -1,0 +1,17 @@
+
+<view style="background-image: url(/static/images/bg.jpg);" class="tw-flex tw-flex-col tw-items-center tw-h-screen tw-bg-cover">
+  <view class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-mt-20 tw-w-40 tw-h-40 tw-rounded-full tw-bg-white">
+    <image src="/static/images/logo.png" class="tw-w-24 tw-h-24"></image>
+  </view>
+
+  <view class="tw-self-stretch tw-mt-auto tw-mb-8 tw-px-16">
+    <view class="tw-pb-2">
+      <van-button bind_init="_initComponent" type="info" open-type="getPhoneNumber" size="small" hairline="{{ true }}" round="{{ true }}" block="{{ true }}" data-wpy-evt="52-3" bindgetphonenumber="_proxy" class="tw-w-full">
+        微信授权登录
+      </van-button>
+    </view>
+    <van-button bind_init="_initComponent" type="info" size="small" hairline="{{ true }}" plain="{{ true }}" round="{{ true }}" block="{{ true }}" data-wpy-evt="52-4" bindtap="_proxy" class="tw-w-full">
+      手机账号登录
+    </van-button>
+  </view>
+</view>

@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  globals: { wx: true },
+  globals: { wx: 'readonly', getCurrentPages: 'readonly' },
   parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module',

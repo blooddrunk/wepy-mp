@@ -1,11 +1,13 @@
 {
     "pages": [
+        "pages/welcome",
+        "pages/login",
         "pages/index"
     ],
     "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "WeChat",
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "小程序",
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#3d20d0",
+        "navigationBarTextStyle": "white"
     }
 }

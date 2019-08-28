@@ -7,10 +7,10 @@
     <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
   </view>
 
-  <van-button bind_init="_initComponent" type="warning" data-wpy-evt="24-0" bindtap="_proxy">TEST</van-button>
+  <van-button bind_init="_initComponent" type="warning" data-wpy-evt="25-0" bindtap="_proxy">TEST</van-button>
 
   <simple-list bind_init="_initComponent" items="{{ asyncData.list.value }}" loading="{{ asyncData.list.loading }}"></simple-list>
 
   <van-toast bind_init="_initComponent" id="van-toast"></van-toast>
-  <van-toast bind_init="_initComponent" id="van-dialog"></van-toast>
+  <van-dialog bind_init="_initComponent" id="van-dialog"></van-dialog>
 </view>

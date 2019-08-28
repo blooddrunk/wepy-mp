@@ -12,13 +12,13 @@
     <simple-list :items="asyncData.list.value" :loading="asyncData.list.loading"></simple-list>
 
     <van-toast id="van-toast"></van-toast>
-    <van-toast id="van-dialog"></van-toast>
+    <van-dialog id="van-dialog"></van-dialog>
   </div>
 </template>
 
 <config>
 {
-  navigationBarTitleText: 'WePY 2.0 Feature Demo',
+  navigationBarTitleText: '小程序',
   usingComponents: {
     'van-button': 'module:vant-weapp/lib/button',
     'van-toast': 'module:vant-weapp/lib/toast',
@@ -55,7 +55,7 @@ wepy.page({
   },
 
   async created() {
-    this.userInfo = await login();
+    this.userInfo = await login(this.$wx);
   },
 
   async ready() {

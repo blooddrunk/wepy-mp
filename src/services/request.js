@@ -1,4 +1,4 @@
-import Wepy from '@wepy/core';
+import wepy from '@wepy/core';
 import Toast from 'vant-weapp/lib/toast/toast';
 
 import login, { LOGIN_AUTH_KEY } from './login';
@@ -25,12 +25,12 @@ export default async (config = {}) => {
 
   if (__needAuth) {
     try {
-      await Wepy.wx.checkSession();
+      await wepy.wx.checkSession();
     } catch (error) {
       await login();
     }
 
-    const token = Wepy.wx.getStorageSync(LOGIN_AUTH_KEY);
+    const token = wepy.wx.getStorageSync(LOGIN_AUTH_KEY);
 
     if (!token) {
       await login();
@@ -41,7 +41,7 @@ export default async (config = {}) => {
   }
 
   if (__showIndicator) {
-    Wepy.wx.showNavigationBarLoading();
+    wepy.wx.showNavigationBarLoading();
   }
 
   if (__showLoading) {
@@ -66,7 +66,7 @@ export default async (config = {}) => {
   try {
     let data;
 
-    const requestTask = Wepy.wx.request(requestConfig);
+    const requestTask = wepy.wx.request(requestConfig);
 
     const response = await requestTask;
     if (__needValidation) {
@@ -108,7 +108,7 @@ export default async (config = {}) => {
     }
   } finally {
     if (__showIndicator) {
-      Wepy.wx.hideNavigationBarLoading();
+      wepy.wx.hideNavigationBarLoading();
     }
 
     if (__showLoading) {

@@ -1,13 +1,15 @@
 <config>
 {
     pages: [
+      'pages/welcome',
+      'pages/login',
       'pages/index'
     ],
     window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTitleText: '小程序',
+      backgroundTextStyle: 'dark',
+      navigationBarBackgroundColor: '#3d20d0',
+      navigationBarTextStyle: 'white'
     }
 }
 </config>
@@ -32,12 +34,14 @@ wepy.app({
 </script>
 
 <style lang="postcss">
+@import 'vant-weapp/lib/common/index.wxss';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 </style>
 
-<style lang="postcss">
+<style lang="scss">
 .container {
   height: 100%;
   display: flex;

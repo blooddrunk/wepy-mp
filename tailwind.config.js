@@ -4,6 +4,13 @@ module.exports = {
   important: true,
 
   theme: {
+    width: theme => ({
+      auto: 'auto',
+      ...theme('spacing'),
+      full: '100%',
+      screen: '100vw',
+    }),
+
     extend: {},
   },
 
@@ -45,5 +52,7 @@ module.exports = {
     'position',
     'textAlign',
     'textColor',
+    'height',
+    'width',
   ],
 };
