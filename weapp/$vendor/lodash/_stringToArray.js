@@ -1,6 +1,6 @@
-var asciiToArray = __wepy_require(24),
-    hasUnicode = __wepy_require(26),
-    unicodeToArray = __wepy_require(27);
+var asciiToArray = __wepy_require(29),
+    hasUnicode = __wepy_require(27),
+    unicodeToArray = __wepy_require(28);
 
 /**
  * Converts `string` to an array.

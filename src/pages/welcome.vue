@@ -75,5 +75,11 @@ wepy.page({
   created() {
     wxLogin();
   },
+
+  onShareAppMessage() {
+    return {
+      path: '/page/welcome',
+    };
+  },
 });
 </script>

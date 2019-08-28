@@ -133,6 +133,12 @@ wepy.page({
       }
     },
   },
+
+  onShareAppMessage() {
+    return {
+      path: '/page/welcome',
+    };
+  },
 });
 </script>
 

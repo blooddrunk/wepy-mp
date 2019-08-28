@@ -146,36 +146,41 @@ _core.default.page({
 
       return handleLogin;
     }()
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    return {
+      path: '/page/welcome'
+    };
   }
-}, {info: {"components":{},"on":{}}, handlers: {'25-72': {"input": function proxy () {
+}, {info: {"components":{},"on":{}}, handlers: {'25-0': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-73': {"input": function proxy () {
+  }},'25-1': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-74': {"tap": function proxy () {
+  }},'25-2': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getCaptcha($event)
       })();
     
-  }},'25-75': {"tap": function proxy () {
+  }},'25-3': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {'50': {
+  }}}, models: {'0': {
       type: "input",
       expr: "mobile",
       handler: function set ($v) {
@@ -183,7 +188,7 @@ _core.default.page({
         _vm.mobile = $v;
       
     }
-    },'51': {
+    },'1': {
       type: "input",
       expr: "captcha",
       handler: function set ($v) {

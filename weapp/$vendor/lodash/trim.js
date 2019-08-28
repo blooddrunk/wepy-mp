@@ -1,8 +1,8 @@
-var baseToString = __wepy_require(30),
-    castSlice = __wepy_require(21),
-    charsEndIndex = __wepy_require(25),
-    charsStartIndex = __wepy_require(35),
-    stringToArray = __wepy_require(28),
+var baseToString = __wepy_require(25),
+    castSlice = __wepy_require(23),
+    charsEndIndex = __wepy_require(35),
+    charsStartIndex = __wepy_require(26),
+    stringToArray = __wepy_require(30),
     toString = __wepy_require(19);
 
 /** Used to match leading and trailing whitespace. */

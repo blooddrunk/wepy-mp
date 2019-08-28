@@ -1,4 +1,4 @@
-var baseSlice = __wepy_require(20);
+var baseSlice = __wepy_require(22);
 
 /**
  * Casts `array` to a slice if it's needed.

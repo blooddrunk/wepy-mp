@@ -1,6 +1,6 @@
 var Symbol = __wepy_require(16),
-    getRawTag = __wepy_require(5),
-    objectToString = __wepy_require(4);
+    getRawTag = __wepy_require(10),
+    objectToString = __wepy_require(11);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
