@@ -13,6 +13,7 @@
       <div class="tw-pb-2">
         <van-button
           class="tw-w-full"
+          color="#00c7f2"
           type="info"
           open-type="getPhoneNumber"
           @getphonenumber="getPhoneNumber"
@@ -26,6 +27,7 @@
       </div>
       <van-button
         class="tw-w-full"
+        color="#00c7f2"
         type="info"
         size="small"
         :hairline="true"
@@ -45,12 +47,15 @@
   navigationBarTitleText: '小程序',
   usingComponents: {
     'van-button': 'module:vant-weapp/lib/button',
+    'logo': '~@/components/logo'
   }
 }
 </config>
 
 <script>
 import wepy from '@wepy/core';
+
+import { wxLogin } from '@/services/login';
 
 wepy.page({
   computed: {},
@@ -65,6 +70,10 @@ wepy.page({
         url: 'login',
       });
     },
+  },
+
+  created() {
+    wxLogin();
   },
 });
 </script>

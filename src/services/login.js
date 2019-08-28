@@ -2,6 +2,7 @@ import wepy from '@wepy/core';
 import Toast from 'vant-weapp/lib/toast/toast';
 import Dialog from 'vant-weapp/lib/dialog/dialog';
 
+export const WX_LOGIN_CODE = 'WX_LOGIN_CODE';
 export const LOGIN_AUTH_KEY = 'LOGIN_AUTH_KEY';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -41,8 +42,8 @@ const promptForUserInfo = async context => {
   }
 };
 
-export default async context => {
-  wepy.wx.removeStorageSync(LOGIN_AUTH_KEY);
+export const wxLogin = async context => {
+  wepy.wx.removeStorageSync(WX_LOGIN_CODE);
 
   let code = '';
 
@@ -50,10 +51,15 @@ export default async context => {
   try {
     const response = await wepy.wx.login();
     code = response.code;
+
+    wepy.wx.setStorageSync(LOGIN_AUTH_KEY, code);
+    return code;
   } catch (error) {
     onLoginFailure(error, context);
   }
+};
 
+export const getUserInfo = async context => {
   let userInfo = null;
 
   // get userInfo
@@ -67,6 +73,15 @@ export default async context => {
   if (!userInfo) {
     onLoginFailure(new Error('用户未授权'), context);
   }
+
+  return userInfo;
+};
+
+export default async context => {
+  wepy.wx.removeStorageSync(LOGIN_AUTH_KEY);
+
+  const code = await wxLogin(context);
+  const userInfo = await getUserInfo(context);
 
   userInfo.code = code;
 

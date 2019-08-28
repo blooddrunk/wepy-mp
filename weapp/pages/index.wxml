@@ -7,7 +7,7 @@
     <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
   </view>
 
-  <van-button bind_init="_initComponent" type="warning" data-wpy-evt="25-0" bindtap="_proxy">TEST</van-button>
+  <van-button bind_init="_initComponent" type="warning" data-wpy-evt="26-0" bindtap="_proxy">TEST</van-button>
 
   <simple-list bind_init="_initComponent" items="{{ asyncData.list.value }}" loading="{{ asyncData.list.loading }}"></simple-list>
 

@@ -1,2 +1,27 @@
 
-<view>login</view>
+<view style="background-image: url(/static/images/bg.jpg);" class="login tw-flex tw-flex-col tw-items-center tw-h-screen tw-bg-cover">
+  <view class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-mt-20 tw-w-40 tw-h-40 tw-rounded-full tw-bg-white">
+    <image src="/static/images/logo.png" class="tw-w-24 tw-h-24"></image>
+  </view>
+
+  <form class="tw-self-stretch tw-px-12 tw-mt-10">
+    <view class="tw-flex tw-items-center tw-border tw-border-solid  tw-border-white tw-py-2">
+      <input value="{{ mobile }}" bindinput="_proxy" data-model-id="24" placeholder-class="tw-text-white" type="text" placeholder="手机号码" aria-label="手机号码" data-wpy-evt="25-24" class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"></input>
+    </view>
+
+    <view class="tw-flex tw-items-center tw-border tw-border-solid  tw-border-white tw-py-2 tw-mt-2">
+      <input value="{{ captcha }}" bindinput="_proxy" data-model-id="25" placeholder-class="tw-text-white" type="text" placeholder="验证码" aria-label="验证码" class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"></input>
+      <label data-wpy-evt="25-25" bindtap="_proxy" class="login__captcha tw-flex-shrink-0 tw-text-white tw-py-1 tw-px-2 tw-text-xs {{ [ canSendMessage ? 'tw-underline' : '' ] }}">
+        {{ captchaText }}
+      </label>
+    </view>
+
+    <view wx:if="{{ error }}" class="tw-mt-2 tw-text-xs tw-text-red-500">
+      {{ error }}
+    </view>
+
+    <button class="tw-mt-12 tw-border tw-border-solid tw-border-blue-600  tw-text-blue-600 tw-p-2 tw-text-base tw-bg-transparent">
+      登 录
+    </button>
+  </form>
+</view>

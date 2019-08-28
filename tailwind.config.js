@@ -52,6 +52,7 @@ module.exports = {
     'position',
     'textAlign',
     'textColor',
+    'textDecoration',
     'height',
     'width',
   ],
