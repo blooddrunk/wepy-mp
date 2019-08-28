@@ -9,7 +9,7 @@ var _regeneratorRuntime2 = _interopRequireDefault(require('../vendor.js')(13));
 
 var _core = _interopRequireDefault(require('../vendor.js')(0));
 
-var _toast = _interopRequireDefault(require('../vendor.js')(5));
+var _toast = _interopRequireDefault(require('../vendor.js')(7));
 
 var _dialog = _interopRequireDefault(require('../vendor.js')(2));
 
@@ -75,7 +75,6 @@ function () {
               context: context,
               title: '提示',
               message: '不登录无法正常使用~\n\n请允许获取您的用户信息...',
-              cancelText: '不了',
               confirmButtonText: '去允许'
             });
 

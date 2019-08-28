@@ -9,8 +9,8 @@
       <img class="tw-w-24 tw-h-24" src="/static/images/logo.png" />
     </div>
 
-    <form class="tw-self-stretch tw-px-12 tw-mt-10">
-      <div class="tw-flex tw-items-center tw-border tw-border-solid  tw-border-white tw-py-2">
+    <form class="tw-self-stretch tw-px-12 tw-mt-16">
+      <div class="login__input-wrapper tw-flex tw-items-center tw-py-2">
         <input
           class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"
           v-model="mobile"
@@ -18,13 +18,11 @@
           type="text"
           placeholder="手机号码"
           aria-label="手机号码"
-          @input="handleMobileInput"
+          @input="clearError"
         />
       </div>
 
-      <div
-        class="tw-flex tw-items-center tw-border tw-border-solid  tw-border-white tw-py-2 tw-mt-2"
-      >
+      <div class="login__input-wrapper tw-flex tw-items-center tw-py-2 tw-mt-2">
         <input
           class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"
           v-model="captcha"
@@ -32,22 +30,24 @@
           type="text"
           placeholder="验证码"
           aria-label="验证码"
+          @input="clearError"
         />
         <span
-          :class="{ 'tw-underline': canSendMessage }"
-          class="login__captcha tw-flex-shrink-0 tw-text-white tw-py-1 tw-px-2 tw-text-xs"
+          :class="{ 'login__captcha-sender': canSendMessage }"
+          class="tw-flex-shrink-0 tw-text-white tw-py-1 tw-mr-2 tw-text-xs tw-border-white tw-border-t-0 tw-border-l-0 tw-border-r-0"
           @tap="getCaptcha"
         >
           {{ captchaText }}
         </span>
       </div>
 
-      <div v-if="error" class="tw-mt-2 tw-text-xs tw-text-red-500">
+      <div v-if="error" class="tw-mt-4 tw-text-xs tw-text-red-500">
         {{ error }}
       </div>
 
       <button
-        class="tw-mt-12 tw-border tw-border-solid tw-border-blue-600  tw-text-blue-600 tw-p-2 tw-text-base tw-bg-transparent"
+        class="tw-mt-16 tw-border tw-border-solid tw-border-blue-600 tw-text-blue-600 tw-text-base tw-bg-transparent"
+        @tap="handleLogin"
       >
         登 录
       </button>
@@ -57,22 +57,7 @@
 
 <script>
 import wepy from '@wepy/core';
-
-function ProgressCountdown(timeleft, bar, text) {
-  return new Promise((resolve, reject) => {
-    var countdownTimer = setInterval(() => {
-      timeleft--;
-
-      document.getElementById(bar).value = timeleft;
-      document.getElementById(text).textContent = timeleft;
-
-      if (timeleft <= 0) {
-        clearInterval(countdownTimer);
-        resolve(true);
-      }
-    }, 1000);
-  });
-}
+import trim from 'lodash/trim';
 
 wepy.page({
   data: {
@@ -87,12 +72,12 @@ wepy.page({
   computed: {},
 
   methods: {
-    handleMobileInput() {
+    clearError() {
       this.error = '';
     },
 
     checkMobile() {
-      if (!this.mobile) {
+      if (!trim(this.mobile)) {
         this.error = '请输入手机号';
         return false;
       } else if (!/^1\d{10}$/.test(this.mobile)) {
@@ -103,21 +88,32 @@ wepy.page({
       return true;
     },
 
+    checkCaptcha() {
+      if (!trim(this.captcha)) {
+        this.error = '请输入验证码';
+        return true;
+      }
+
+      return false;
+    },
+
     async getCaptcha() {
       if (this.checkMobile()) {
         this.canSendMessage = false;
 
         await this.initiateCountDown(60);
+
         this.captchaText = '获取验证码';
         this.canSendMessage = true;
       }
     },
 
     async initiateCountDown(timeleft) {
+      this.captchaText = `${timeleft}s后再次获取`;
+
       return new Promise((resolve, reject) => {
         const countdownTimer = setInterval(() => {
           timeleft--;
-
           this.captchaText = `${timeleft}s后再次获取`;
 
           if (timeleft <= 0) {
@@ -127,17 +123,45 @@ wepy.page({
         }, 1000);
       });
     },
+
+    async handleLogin() {
+      if (this.checkMobile() && this.checkCaptcha()) {
+        const payload = {
+          mobile: this.mobile,
+          captcha: this.captcha,
+        };
+      }
+    },
   },
 });
 </script>
 
 <style lang="scss">
+@mixin hairline-border($color: white) {
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color;
+
+  @media (min-resolution: 2dppx) {
+    border-width: 0.5px;
+  }
+
+  @media (min-resolution: 3dppx) {
+    border-width: 0.33333333px;
+  }
+
+  @media (min-resolution: 4dppx) {
+    border-width: 0.25px;
+  }
+}
+
 .login {
-  &__captcha {
-    &::after {
-      border: none;
-      border-bottom: 1px solid white;
-    }
+  &__input-wrapper {
+    @include hairline-border;
+  }
+
+  &__captcha-sender {
+    @include hairline-border;
   }
 }
 </style>

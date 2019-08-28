@@ -25,7 +25,6 @@ const promptForUserInfo = async context => {
     context,
     title: '提示',
     message: '不登录无法正常使用~\n\n请允许获取您的用户信息...',
-    cancelText: '不了',
     confirmButtonText: '去允许',
   });
 

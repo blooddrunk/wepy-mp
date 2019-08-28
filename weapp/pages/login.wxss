@@ -1,2 +1,2 @@
-.login__captcha::after{border:none;border-bottom:1px solid white}
+.login__input-wrapper{border-width:1px;border-style:solid;border-color:#fff}@media (min-resolution: 2dppx){.login__input-wrapper{border-width:0.5px}}@media (min-resolution: 3dppx){.login__input-wrapper{border-width:0.33333333px}}@media (min-resolution: 4dppx){.login__input-wrapper{border-width:0.25px}}.login__captcha-sender{border-width:1px;border-style:solid;border-color:#fff}@media (min-resolution: 2dppx){.login__captcha-sender{border-width:0.5px}}@media (min-resolution: 3dppx){.login__captcha-sender{border-width:0.33333333px}}@media (min-resolution: 4dppx){.login__captcha-sender{border-width:0.25px}}
 

@@ -4,23 +4,23 @@
     <image src="/static/images/logo.png" class="tw-w-24 tw-h-24"></image>
   </view>
 
-  <form class="tw-self-stretch tw-px-12 tw-mt-10">
-    <view class="tw-flex tw-items-center tw-border tw-border-solid  tw-border-white tw-py-2">
-      <input value="{{ mobile }}" bindinput="_proxy" data-model-id="24" placeholder-class="tw-text-white" type="text" placeholder="手机号码" aria-label="手机号码" data-wpy-evt="25-24" class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"></input>
+  <form class="tw-self-stretch tw-px-12 tw-mt-16">
+    <view class="login__input-wrapper tw-flex tw-items-center tw-py-2">
+      <input value="{{ mobile }}" bindinput="_proxy" data-model-id="50" placeholder-class="tw-text-white" type="text" placeholder="手机号码" aria-label="手机号码" data-wpy-evt="25-72" class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"></input>
     </view>
 
-    <view class="tw-flex tw-items-center tw-border tw-border-solid  tw-border-white tw-py-2 tw-mt-2">
-      <input value="{{ captcha }}" bindinput="_proxy" data-model-id="25" placeholder-class="tw-text-white" type="text" placeholder="验证码" aria-label="验证码" class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"></input>
-      <label data-wpy-evt="25-25" bindtap="_proxy" class="login__captcha tw-flex-shrink-0 tw-text-white tw-py-1 tw-px-2 tw-text-xs {{ [ canSendMessage ? 'tw-underline' : '' ] }}">
+    <view class="login__input-wrapper tw-flex tw-items-center tw-py-2 tw-mt-2">
+      <input value="{{ captcha }}" bindinput="_proxy" data-model-id="51" placeholder-class="tw-text-white" type="text" placeholder="验证码" aria-label="验证码" data-wpy-evt="25-73" class="tw-appearance-none tw-bg-transparent tw-border-none tw-w-full tw-text-white tw-mr-3 tw-py-1 tw-px-2 tw-leading-normal"></input>
+      <label data-wpy-evt="25-74" bindtap="_proxy" class="tw-flex-shrink-0 tw-text-white tw-py-1 tw-mr-2 tw-text-xs tw-border-white tw-border-t-0 tw-border-l-0 tw-border-r-0 {{ [ canSendMessage ? 'login__captcha-sender' : '' ] }}">
         {{ captchaText }}
       </label>
     </view>
 
-    <view wx:if="{{ error }}" class="tw-mt-2 tw-text-xs tw-text-red-500">
+    <view wx:if="{{ error }}" class="tw-mt-4 tw-text-xs tw-text-red-500">
       {{ error }}
     </view>
 
-    <button class="tw-mt-12 tw-border tw-border-solid tw-border-blue-600  tw-text-blue-600 tw-p-2 tw-text-base tw-bg-transparent">
+    <button data-wpy-evt="25-75" bindtap="_proxy" class="tw-mt-16 tw-border tw-border-solid tw-border-blue-600 tw-text-blue-600 tw-text-base tw-bg-transparent">
       登 录
     </button>
   </form>

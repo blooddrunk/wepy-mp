@@ -4,26 +4,13 @@ var _regeneratorRuntime2 = _interopRequireDefault(require('../vendor.js')(13));
 
 var _core = _interopRequireDefault(require('../vendor.js')(0));
 
+var _trim = _interopRequireDefault(require('../vendor.js')(36));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ProgressCountdown(timeleft, bar, text) {
-  return new Promise(function (resolve, reject) {
-    var countdownTimer = setInterval(function () {
-      timeleft--;
-      document.getElementById(bar).value = timeleft;
-      document.getElementById(text).textContent = timeleft;
-
-      if (timeleft <= 0) {
-        clearInterval(countdownTimer);
-        resolve(true);
-      }
-    }, 1000);
-  });
-}
 
 _core.default.page({
   data: {
@@ -35,11 +22,11 @@ _core.default.page({
   },
   computed: {},
   methods: {
-    handleMobileInput: function handleMobileInput() {
+    clearError: function clearError() {
       this.error = '';
     },
     checkMobile: function checkMobile() {
-      if (!this.mobile) {
+      if (!(0, _trim.default)(this.mobile)) {
         this.error = '请输入手机号';
         return false;
       } else if (!/^1\d{10}$/.test(this.mobile)) {
@@ -48,6 +35,14 @@ _core.default.page({
       }
 
       return true;
+    },
+    checkCaptcha: function checkCaptcha() {
+      if (!(0, _trim.default)(this.captcha)) {
+        this.error = '请输入验证码';
+        return true;
+      }
+
+      return false;
     },
     getCaptcha: function () {
       var _getCaptcha = _asyncToGenerator(
@@ -94,6 +89,7 @@ _core.default.page({
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                this.captchaText = "".concat(timeleft, "s\u540E\u518D\u6B21\u83B7\u53D6");
                 return _context2.abrupt("return", new Promise(function (resolve, reject) {
                   var countdownTimer = setInterval(function () {
                     timeleft--;
@@ -106,12 +102,12 @@ _core.default.page({
                   }, 1000);
                 }));
 
-              case 1:
+              case 2:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, this);
       }));
 
       function initiateCountDown(_x) {
@@ -119,23 +115,67 @@ _core.default.page({
       }
 
       return initiateCountDown;
+    }(),
+    handleLogin: function () {
+      var _handleLogin = _asyncToGenerator(
+      /*#__PURE__*/
+      _regeneratorRuntime2.default.mark(function _callee3() {
+        var payload;
+        return _regeneratorRuntime2.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (this.checkMobile() && this.checkCaptcha()) {
+                  payload = {
+                    mobile: this.mobile,
+                    captcha: this.captcha
+                  };
+                }
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function handleLogin() {
+        return _handleLogin.apply(this, arguments);
+      }
+
+      return handleLogin;
     }()
   }
-}, {info: {"components":{},"on":{}}, handlers: {'25-24': {"input": function proxy () {
+}, {info: {"components":{},"on":{}}, handlers: {'25-72': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
-        _vm.handleMobileInput($event)
+        _vm.clearError($event)
       })();
     
-  }},'25-25': {"tap": function proxy () {
+  }},'25-73': {"input": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.clearError($event)
+      })();
+    
+  }},'25-74': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getCaptcha($event)
       })();
     
-  }}}, models: {'24': {
+  }},'25-75': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {'50': {
       type: "input",
       expr: "mobile",
       handler: function set ($v) {
@@ -143,7 +183,7 @@ _core.default.page({
         _vm.mobile = $v;
       
     }
-    },'25': {
+    },'51': {
       type: "input",
       expr: "captcha",
       handler: function set ($v) {

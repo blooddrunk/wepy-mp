@@ -9,11 +9,11 @@
       <img class="tw-w-24 tw-h-24" src="/static/images/logo.png" />
     </div>
 
-    <div class="tw-self-stretch tw-mt-auto tw-mb-8 tw-px-16">
+    <div class="tw-self-stretch tw-mt-auto tw-mb-12 tw-px-16">
       <div class="tw-pb-2">
         <van-button
           class="tw-w-full"
-          color="#00c7f2"
+          color="#3182CE"
           type="info"
           open-type="getPhoneNumber"
           @getphonenumber="getPhoneNumber"
@@ -27,7 +27,7 @@
       </div>
       <van-button
         class="tw-w-full"
-        color="#00c7f2"
+        color="#3182CE"
         type="info"
         size="small"
         :hairline="true"

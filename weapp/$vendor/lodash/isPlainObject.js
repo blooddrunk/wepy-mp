@@ -1,5 +1,5 @@
 var baseGetTag = __wepy_require(17),
-    getPrototype = __wepy_require(10),
+    getPrototype = __wepy_require(9),
     isObjectLike = __wepy_require(3);
 
 /** `Object#toString` result references. */

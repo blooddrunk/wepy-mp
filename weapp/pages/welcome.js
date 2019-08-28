@@ -21,196 +21,238 @@ _core.default.page({
   created: function created() {
     (0, _login.wxLogin)();
   }
-}, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+}, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-5': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-5': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-5': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-4":["getphonenumber"],"24-5":["tap"]}}, handlers: {'24-4': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-5': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {

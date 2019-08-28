@@ -9,7 +9,7 @@ var _regeneratorRuntime2 = _interopRequireDefault(require('../vendor.js')(13));
 
 var _core = _interopRequireDefault(require('../vendor.js')(0));
 
-var _toast = _interopRequireDefault(require('../vendor.js')(5));
+var _toast = _interopRequireDefault(require('../vendor.js')(7));
 
 var _login = _interopRequireWildcard(require('login.js'));
 

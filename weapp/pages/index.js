@@ -4,7 +4,7 @@ var _regeneratorRuntime2 = _interopRequireDefault(require('../vendor.js')(13));
 
 var _core = _interopRequireDefault(require('../vendor.js')(0));
 
-var _toast = _interopRequireDefault(require('../vendor.js')(5));
+var _toast = _interopRequireDefault(require('../vendor.js')(7));
 
 var _login = _interopRequireDefault(require('../services/login.js'));
 
@@ -91,6 +91,111 @@ _core.default.page({
     return ready;
   }()
 }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {

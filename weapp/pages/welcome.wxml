@@ -4,13 +4,13 @@
     <image src="/static/images/logo.png" class="tw-w-24 tw-h-24"></image>
   </view>
 
-  <view class="tw-self-stretch tw-mt-auto tw-mb-8 tw-px-16">
+  <view class="tw-self-stretch tw-mt-auto tw-mb-12 tw-px-16">
     <view class="tw-pb-2">
-      <van-button bind_init="_initComponent" color="#00c7f2" type="info" open-type="getPhoneNumber" size="small" hairline="{{ true }}" round="{{ true }}" block="{{ true }}" data-wpy-evt="24-0" bindgetphonenumber="_proxy" class="tw-w-full">
+      <van-button bind_init="_initComponent" color="#3182CE" type="info" open-type="getPhoneNumber" size="small" hairline="{{ true }}" round="{{ true }}" block="{{ true }}" data-wpy-evt="24-4" bindgetphonenumber="_proxy" class="tw-w-full">
         微信授权登录
       </van-button>
     </view>
-    <van-button bind_init="_initComponent" color="#00c7f2" type="info" size="small" hairline="{{ true }}" plain="{{ true }}" round="{{ true }}" block="{{ true }}" data-wpy-evt="24-1" bindtap="_proxy" class="tw-w-full">
+    <van-button bind_init="_initComponent" color="#3182CE" type="info" size="small" hairline="{{ true }}" plain="{{ true }}" round="{{ true }}" block="{{ true }}" data-wpy-evt="24-5" bindtap="_proxy" class="tw-w-full">
       手机账号登录
     </van-button>
   </view>

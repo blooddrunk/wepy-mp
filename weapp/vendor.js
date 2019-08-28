@@ -34,7 +34,7 @@ var process = { env: {} };
    return __wepy_require;
 })([
 /***** module 0 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/@wepy/core/dist/wepy.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/@wepy/core/dist/wepy.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 // can we use __proto__?
@@ -2689,7 +2689,7 @@ module.exports = wepy;
 
 
 /***** module 1 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/@wepy/use-promisify/dist/index.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/@wepy/use-promisify/dist/index.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 /**
@@ -2911,7 +2911,7 @@ module.exports = index;
 
 
 /***** module 2 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/vant-weapp/lib/dialog/dialog.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/vant-weapp/lib/dialog/dialog.js *****/
 function(module, exports, __wepy_require) {"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
@@ -2993,7 +2993,7 @@ exports.default = Dialog;
 
 
 /***** module 3 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/isObjectLike.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/isObjectLike.js *****/
 function(module, exports, __wepy_require) {/**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -3028,7 +3028,87 @@ module.exports = isObjectLike;
 
 
 /***** module 4 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/vant-weapp/lib/common/utils.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_objectToString.js *****/
+function(module, exports, __wepy_require) {/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+module.exports = objectToString;
+
+},/***** module 4 end *****/
+
+
+/***** module 5 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_getRawTag.js *****/
+function(module, exports, __wepy_require) {var Symbol = __wepy_require(16);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+module.exports = getRawTag;
+
+},/***** module 5 end *****/
+
+
+/***** module 6 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/vant-weapp/lib/common/utils.js *****/
 function(module, exports, __wepy_require) {"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function isDef(value) {
@@ -3055,11 +3135,11 @@ function nextTick(fn) {
 }
 exports.nextTick = nextTick;
 
-},/***** module 4 end *****/
+},/***** module 6 end *****/
 
 
-/***** module 5 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/vant-weapp/lib/toast/toast.js *****/
+/***** module 7 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/vant-weapp/lib/toast/toast.js *****/
 function(module, exports, __wepy_require) {"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
@@ -3073,7 +3153,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var utils_1 = __wepy_require(4);
+var utils_1 = __wepy_require(6);
 var defaultOptions = {
     type: 'text',
     mask: false,
@@ -3142,11 +3222,44 @@ Toast.resetDefaultOptions = function () {
 };
 exports.default = Toast;
 
-},/***** module 5 end *****/
+},/***** module 7 end *****/
 
 
-/***** module 6 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/vuex/dist/vuex.common.js *****/
+/***** module 8 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_overArg.js *****/
+function(module, exports, __wepy_require) {/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+module.exports = overArg;
+
+},/***** module 8 end *****/
+
+
+/***** module 9 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_getPrototype.js *****/
+function(module, exports, __wepy_require) {var overArg = __wepy_require(8);
+
+/** Built-in value references. */
+var getPrototype = overArg(Object.getPrototypeOf, Object);
+
+module.exports = getPrototype;
+
+},/***** module 9 end *****/
+
+
+/***** module 10 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/vuex/dist/vuex.common.js *****/
 function(module, exports, __wepy_require) {/**
  * vuex v3.1.1
  * (c) 2019 Evan You
@@ -4159,16 +4272,16 @@ var index = {
 
 module.exports = index;
 
-},/***** module 6 end *****/
+},/***** module 10 end *****/
 
 
-/***** module 7 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/@wepy/x/dist/index.js *****/
+/***** module 11 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/@wepy/x/dist/index.js *****/
 function(module, exports, __wepy_require) {'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var vuex = __wepy_require(6);
+var vuex = __wepy_require(10);
 
 function wepyInstall (wepy) {
   vuex.install(wepy);
@@ -4212,124 +4325,11 @@ exports.createNamespacedHelpers = vuex.createNamespacedHelpers;
 exports.default = index;
 exports.install = wepyInstall;
 
-},/***** module 7 end *****/
-
-
-/***** module 8 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_objectToString.js *****/
-function(module, exports, __wepy_require) {/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-module.exports = objectToString;
-
-},/***** module 8 end *****/
-
-
-/***** module 9 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_overArg.js *****/
-function(module, exports, __wepy_require) {/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */
-function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
-}
-
-module.exports = overArg;
-
-},/***** module 9 end *****/
-
-
-/***** module 10 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_getPrototype.js *****/
-function(module, exports, __wepy_require) {var overArg = __wepy_require(9);
-
-/** Built-in value references. */
-var getPrototype = overArg(Object.getPrototypeOf, Object);
-
-module.exports = getPrototype;
-
-},/***** module 10 end *****/
-
-
-/***** module 11 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_getRawTag.js *****/
-function(module, exports, __wepy_require) {var Symbol = __wepy_require(16);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-module.exports = getRawTag;
-
 },/***** module 11 end *****/
 
 
 /***** module 12 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/regenerator-runtime/runtime.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/regenerator-runtime/runtime.js *****/
 function(module, exports, __wepy_require) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -5062,7 +5062,7 @@ function(module, exports, __wepy_require) {/**
 
 
 /***** module 13 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/regenerator-runtime/runtime-module.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/regenerator-runtime/runtime-module.js *****/
 function(module, exports, __wepy_require) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -5103,7 +5103,7 @@ if (hadRuntime) {
 
 
 /***** module 14 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_freeGlobal.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_freeGlobal.js *****/
 function(module, exports, __wepy_require) {/** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 
@@ -5113,7 +5113,7 @@ module.exports = freeGlobal;
 
 
 /***** module 15 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_root.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_root.js *****/
 function(module, exports, __wepy_require) {var freeGlobal = __wepy_require(14);
 
 /** Detect free variable `self`. */
@@ -5128,7 +5128,7 @@ module.exports = root;
 
 
 /***** module 16 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_Symbol.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_Symbol.js *****/
 function(module, exports, __wepy_require) {var root = __wepy_require(15);
 
 /** Built-in value references. */
@@ -5140,10 +5140,10 @@ module.exports = Symbol;
 
 
 /***** module 17 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/_baseGetTag.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_baseGetTag.js *****/
 function(module, exports, __wepy_require) {var Symbol = __wepy_require(16),
-    getRawTag = __wepy_require(11),
-    objectToString = __wepy_require(8);
+    getRawTag = __wepy_require(5),
+    objectToString = __wepy_require(4);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -5174,9 +5174,9 @@ module.exports = baseGetTag;
 
 
 /***** module 18 start *****/
-/***** /mnt/d/web/mp/wepy-mp/node_modules/lodash/isPlainObject.js *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/isPlainObject.js *****/
 function(module, exports, __wepy_require) {var baseGetTag = __wepy_require(17),
-    getPrototype = __wepy_require(10),
+    getPrototype = __wepy_require(9),
     isObjectLike = __wepy_require(3);
 
 /** `Object#toString` result references. */
@@ -5238,7 +5238,568 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-}/***** module 18 end *****/
+},/***** module 18 end *****/
+
+
+/***** module 19 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/toString.js *****/
+function(module, exports, __wepy_require) {var baseToString = __wepy_require(30);
+
+/**
+ * Converts `value` to a string. An empty string is returned for `null`
+ * and `undefined` values. The sign of `-0` is preserved.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ * @example
+ *
+ * _.toString(null);
+ * // => ''
+ *
+ * _.toString(-0);
+ * // => '-0'
+ *
+ * _.toString([1, 2, 3]);
+ * // => '1,2,3'
+ */
+function toString(value) {
+  return value == null ? '' : baseToString(value);
+}
+
+module.exports = toString;
+
+},/***** module 19 end *****/
+
+
+/***** module 20 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_baseSlice.js *****/
+function(module, exports, __wepy_require) {/**
+ * The base implementation of `_.slice` without an iteratee call guard.
+ *
+ * @private
+ * @param {Array} array The array to slice.
+ * @param {number} [start=0] The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the slice of `array`.
+ */
+function baseSlice(array, start, end) {
+  var index = -1,
+      length = array.length;
+
+  if (start < 0) {
+    start = -start > length ? 0 : (length + start);
+  }
+  end = end > length ? length : end;
+  if (end < 0) {
+    end += length;
+  }
+  length = start > end ? 0 : ((end - start) >>> 0);
+  start >>>= 0;
+
+  var result = Array(length);
+  while (++index < length) {
+    result[index] = array[index + start];
+  }
+  return result;
+}
+
+module.exports = baseSlice;
+
+},/***** module 20 end *****/
+
+
+/***** module 21 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_castSlice.js *****/
+function(module, exports, __wepy_require) {var baseSlice = __wepy_require(20);
+
+/**
+ * Casts `array` to a slice if it's needed.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {number} start The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the cast slice.
+ */
+function castSlice(array, start, end) {
+  var length = array.length;
+  end = end === undefined ? length : end;
+  return (!start && end >= length) ? array : baseSlice(array, start, end);
+}
+
+module.exports = castSlice;
+
+},/***** module 21 end *****/
+
+
+/***** module 22 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_arrayMap.js *****/
+function(module, exports, __wepy_require) {/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+},/***** module 22 end *****/
+
+
+/***** module 23 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/isArray.js *****/
+function(module, exports, __wepy_require) {/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+module.exports = isArray;
+
+},/***** module 23 end *****/
+
+
+/***** module 24 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_asciiToArray.js *****/
+function(module, exports, __wepy_require) {/**
+ * Converts an ASCII `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */
+function asciiToArray(string) {
+  return string.split('');
+}
+
+module.exports = asciiToArray;
+
+},/***** module 24 end *****/
+
+
+/***** module 25 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_charsEndIndex.js *****/
+function(module, exports, __wepy_require) {var baseIndexOf = __wepy_require(34);
+
+/**
+ * Used by `_.trim` and `_.trimEnd` to get the index of the last string symbol
+ * that is not found in the character symbols.
+ *
+ * @private
+ * @param {Array} strSymbols The string symbols to inspect.
+ * @param {Array} chrSymbols The character symbols to find.
+ * @returns {number} Returns the index of the last unmatched string symbol.
+ */
+function charsEndIndex(strSymbols, chrSymbols) {
+  var index = strSymbols.length;
+
+  while (index-- && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
+  return index;
+}
+
+module.exports = charsEndIndex;
+
+},/***** module 25 end *****/
+
+
+/***** module 26 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_hasUnicode.js *****/
+function(module, exports, __wepy_require) {/** Used to compose unicode character classes. */
+var rsAstralRange = '\\ud800-\\udfff',
+    rsComboMarksRange = '\\u0300-\\u036f',
+    reComboHalfMarksRange = '\\ufe20-\\ufe2f',
+    rsComboSymbolsRange = '\\u20d0-\\u20ff',
+    rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
+    rsVarRange = '\\ufe0e\\ufe0f';
+
+/** Used to compose unicode capture groups. */
+var rsZWJ = '\\u200d';
+
+/** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
+var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
+
+/**
+ * Checks if `string` contains Unicode symbols.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {boolean} Returns `true` if a symbol is found, else `false`.
+ */
+function hasUnicode(string) {
+  return reHasUnicode.test(string);
+}
+
+module.exports = hasUnicode;
+
+},/***** module 26 end *****/
+
+
+/***** module 27 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_unicodeToArray.js *****/
+function(module, exports, __wepy_require) {/** Used to compose unicode character classes. */
+var rsAstralRange = '\\ud800-\\udfff',
+    rsComboMarksRange = '\\u0300-\\u036f',
+    reComboHalfMarksRange = '\\ufe20-\\ufe2f',
+    rsComboSymbolsRange = '\\u20d0-\\u20ff',
+    rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
+    rsVarRange = '\\ufe0e\\ufe0f';
+
+/** Used to compose unicode capture groups. */
+var rsAstral = '[' + rsAstralRange + ']',
+    rsCombo = '[' + rsComboRange + ']',
+    rsFitz = '\\ud83c[\\udffb-\\udfff]',
+    rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
+    rsNonAstral = '[^' + rsAstralRange + ']',
+    rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
+    rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
+    rsZWJ = '\\u200d';
+
+/** Used to compose unicode regexes. */
+var reOptMod = rsModifier + '?',
+    rsOptVar = '[' + rsVarRange + ']?',
+    rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
+    rsSeq = rsOptVar + reOptMod + rsOptJoin,
+    rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
+
+/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
+var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
+
+/**
+ * Converts a Unicode `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */
+function unicodeToArray(string) {
+  return string.match(reUnicode) || [];
+}
+
+module.exports = unicodeToArray;
+
+},/***** module 27 end *****/
+
+
+/***** module 28 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_stringToArray.js *****/
+function(module, exports, __wepy_require) {var asciiToArray = __wepy_require(24),
+    hasUnicode = __wepy_require(26),
+    unicodeToArray = __wepy_require(27);
+
+/**
+ * Converts `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */
+function stringToArray(string) {
+  return hasUnicode(string)
+    ? unicodeToArray(string)
+    : asciiToArray(string);
+}
+
+module.exports = stringToArray;
+
+},/***** module 28 end *****/
+
+
+/***** module 29 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/isSymbol.js *****/
+function(module, exports, __wepy_require) {var baseGetTag = __wepy_require(17),
+    isObjectLike = __wepy_require(3);
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && baseGetTag(value) == symbolTag);
+}
+
+module.exports = isSymbol;
+
+},/***** module 29 end *****/
+
+
+/***** module 30 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_baseToString.js *****/
+function(module, exports, __wepy_require) {var Symbol = __wepy_require(16),
+    arrayMap = __wepy_require(22),
+    isArray = __wepy_require(23),
+    isSymbol = __wepy_require(29);
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0;
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto = Symbol ? Symbol.prototype : undefined,
+    symbolToString = symbolProto ? symbolProto.toString : undefined;
+
+/**
+ * The base implementation of `_.toString` which doesn't convert nullish
+ * values to empty strings.
+ *
+ * @private
+ * @param {*} value The value to process.
+ * @returns {string} Returns the string.
+ */
+function baseToString(value) {
+  // Exit early for strings to avoid a performance hit in some environments.
+  if (typeof value == 'string') {
+    return value;
+  }
+  if (isArray(value)) {
+    // Recursively convert values (susceptible to call stack limits).
+    return arrayMap(value, baseToString) + '';
+  }
+  if (isSymbol(value)) {
+    return symbolToString ? symbolToString.call(value) : '';
+  }
+  var result = (value + '');
+  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+}
+
+module.exports = baseToString;
+
+},/***** module 30 end *****/
+
+
+/***** module 31 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_baseFindIndex.js *****/
+function(module, exports, __wepy_require) {/**
+ * The base implementation of `_.findIndex` and `_.findLastIndex` without
+ * support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {Function} predicate The function invoked per iteration.
+ * @param {number} fromIndex The index to search from.
+ * @param {boolean} [fromRight] Specify iterating from right to left.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function baseFindIndex(array, predicate, fromIndex, fromRight) {
+  var length = array.length,
+      index = fromIndex + (fromRight ? 1 : -1);
+
+  while ((fromRight ? index-- : ++index < length)) {
+    if (predicate(array[index], index, array)) {
+      return index;
+    }
+  }
+  return -1;
+}
+
+module.exports = baseFindIndex;
+
+},/***** module 31 end *****/
+
+
+/***** module 32 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_baseIsNaN.js *****/
+function(module, exports, __wepy_require) {/**
+ * The base implementation of `_.isNaN` without support for number objects.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is `NaN`, else `false`.
+ */
+function baseIsNaN(value) {
+  return value !== value;
+}
+
+module.exports = baseIsNaN;
+
+},/***** module 32 end *****/
+
+
+/***** module 33 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_strictIndexOf.js *****/
+function(module, exports, __wepy_require) {/**
+ * A specialized version of `_.indexOf` which performs strict equality
+ * comparisons of values, i.e. `===`.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} value The value to search for.
+ * @param {number} fromIndex The index to search from.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function strictIndexOf(array, value, fromIndex) {
+  var index = fromIndex - 1,
+      length = array.length;
+
+  while (++index < length) {
+    if (array[index] === value) {
+      return index;
+    }
+  }
+  return -1;
+}
+
+module.exports = strictIndexOf;
+
+},/***** module 33 end *****/
+
+
+/***** module 34 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_baseIndexOf.js *****/
+function(module, exports, __wepy_require) {var baseFindIndex = __wepy_require(31),
+    baseIsNaN = __wepy_require(32),
+    strictIndexOf = __wepy_require(33);
+
+/**
+ * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} value The value to search for.
+ * @param {number} fromIndex The index to search from.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function baseIndexOf(array, value, fromIndex) {
+  return value === value
+    ? strictIndexOf(array, value, fromIndex)
+    : baseFindIndex(array, baseIsNaN, fromIndex);
+}
+
+module.exports = baseIndexOf;
+
+},/***** module 34 end *****/
+
+
+/***** module 35 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/_charsStartIndex.js *****/
+function(module, exports, __wepy_require) {var baseIndexOf = __wepy_require(34);
+
+/**
+ * Used by `_.trim` and `_.trimStart` to get the index of the first string symbol
+ * that is not found in the character symbols.
+ *
+ * @private
+ * @param {Array} strSymbols The string symbols to inspect.
+ * @param {Array} chrSymbols The character symbols to find.
+ * @returns {number} Returns the index of the first unmatched string symbol.
+ */
+function charsStartIndex(strSymbols, chrSymbols) {
+  var index = -1,
+      length = strSymbols.length;
+
+  while (++index < length && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
+  return index;
+}
+
+module.exports = charsStartIndex;
+
+},/***** module 35 end *****/
+
+
+/***** module 36 start *****/
+/***** /mnt/d/code/mp/wepy-mp/node_modules/lodash/trim.js *****/
+function(module, exports, __wepy_require) {var baseToString = __wepy_require(30),
+    castSlice = __wepy_require(21),
+    charsEndIndex = __wepy_require(25),
+    charsStartIndex = __wepy_require(35),
+    stringToArray = __wepy_require(28),
+    toString = __wepy_require(19);
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/**
+ * Removes leading and trailing whitespace or specified characters from `string`.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category String
+ * @param {string} [string=''] The string to trim.
+ * @param {string} [chars=whitespace] The characters to trim.
+ * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+ * @returns {string} Returns the trimmed string.
+ * @example
+ *
+ * _.trim('  abc  ');
+ * // => 'abc'
+ *
+ * _.trim('-_-abc-_-', '_-');
+ * // => 'abc'
+ *
+ * _.map(['  foo  ', '  bar  '], _.trim);
+ * // => ['foo', 'bar']
+ */
+function trim(string, chars, guard) {
+  string = toString(string);
+  if (string && (guard || chars === undefined)) {
+    return string.replace(reTrim, '');
+  }
+  if (!string || !(chars = baseToString(chars))) {
+    return string;
+  }
+  var strSymbols = stringToArray(string),
+      chrSymbols = stringToArray(chars),
+      start = charsStartIndex(strSymbols, chrSymbols),
+      end = charsEndIndex(strSymbols, chrSymbols) + 1;
+
+  return castSlice(strSymbols, start, end).join('');
+}
+
+module.exports = trim;
+
+}/***** module 36 end *****/
 
 
 ]);
