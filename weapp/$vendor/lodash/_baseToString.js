@@ -1,7 +1,7 @@
 var Symbol = __wepy_require(16),
     arrayMap = __wepy_require(20),
     isArray = __wepy_require(21),
-    isSymbol = __wepy_require(24);
+    isSymbol = __wepy_require(23);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;

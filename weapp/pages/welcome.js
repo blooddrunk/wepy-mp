@@ -26,14 +26,42 @@ _core.default.page({
       path: '/page/welcome'
     };
   }
-}, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-0":["getphonenumber"],"24-1":["tap"]}}, handlers: {'24-0': {"getphonenumber": function proxy () {
+}, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-2":["getphonenumber"],"24-3":["tap"]}}, handlers: {'24-2': {"getphonenumber": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getPhoneNumber($event)
       })();
     
-  }},'24-1': {"tap": function proxy () {
+  }},'24-3': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-2":["getphonenumber"],"24-3":["tap"]}}, handlers: {'24-2': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-3': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-2":["getphonenumber"],"24-3":["tap"]}}, handlers: {'24-2': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-3': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {

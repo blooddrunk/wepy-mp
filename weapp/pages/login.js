@@ -152,35 +152,35 @@ _core.default.page({
       path: '/page/welcome'
     };
   }
-}, {info: {"components":{},"on":{}}, handlers: {'25-0': {"input": function proxy () {
+}, {info: {"components":{},"on":{}}, handlers: {'25-12': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-1': {"input": function proxy () {
+  }},'25-13': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-2': {"tap": function proxy () {
+  }},'25-14': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getCaptcha($event)
       })();
     
-  }},'25-3': {"tap": function proxy () {
+  }},'25-15': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {'0': {
+  }}}, models: {'6': {
       type: "input",
       expr: "mobile",
       handler: function set ($v) {
@@ -188,7 +188,51 @@ _core.default.page({
         _vm.mobile = $v;
       
     }
-    },'1': {
+    },'7': {
+      type: "input",
+      expr: "captcha",
+      handler: function set ($v) {
+      var _vm=this;
+        _vm.captcha = $v;
+      
+    }
+    }} }, {info: {"components":{},"on":{}}, handlers: {'25-12': {"input": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.clearError($event)
+      })();
+    
+  }},'25-13': {"input": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.clearError($event)
+      })();
+    
+  }},'25-14': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getCaptcha($event)
+      })();
+    
+  }},'25-15': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {'6': {
+      type: "input",
+      expr: "mobile",
+      handler: function set ($v) {
+      var _vm=this;
+        _vm.mobile = $v;
+      
+    }
+    },'7': {
       type: "input",
       expr: "captcha",
       handler: function set ($v) {

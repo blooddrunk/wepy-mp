@@ -1,5 +1,5 @@
-var baseFindIndex = __wepy_require(31),
-    baseIsNaN = __wepy_require(32),
+var baseFindIndex = __wepy_require(32),
+    baseIsNaN = __wepy_require(31),
     strictIndexOf = __wepy_require(33);
 
 /**

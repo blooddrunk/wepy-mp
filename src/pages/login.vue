@@ -4,7 +4,7 @@
     style="background-image: url(/static/images/bg.jpg);"
   >
     <div
-      class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-mt-20 tw-w-40 tw-h-40 tw-rounded-full tw-bg-white"
+      class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-mt-16 tw-w-40 tw-h-40 tw-rounded-full tw-bg-white"
     >
       <img class="tw-w-24 tw-h-24" src="/static/images/logo.png" />
     </div>
@@ -46,7 +46,7 @@
       </div>
 
       <button
-        class="tw-mt-16 tw-border tw-border-solid tw-border-blue-600 tw-text-blue-600 tw-text-base tw-bg-transparent"
+        class="tw-mt-12 tw-border tw-border-solid tw-border-blue-600 tw-text-blue-600 tw-text-base tw-bg-transparent"
         @tap="handleLogin"
       >
         登 录
