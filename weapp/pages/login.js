@@ -39,10 +39,10 @@ _core.default.page({
     checkCaptcha: function checkCaptcha() {
       if (!(0, _trim.default)(this.captcha)) {
         this.error = '请输入验证码';
-        return true;
+        return false;
       }
 
-      return false;
+      return true;
     },
     getCaptcha: function () {
       var _getCaptcha = _asyncToGenerator(
@@ -130,7 +130,7 @@ _core.default.page({
                     mobile: this.mobile,
                     captcha: this.captcha
                   };
-                  console.log(playload);
+                  console.log(payload);
 
                   _core.default.wx.navigateTo({
                     url: 'user-home'
@@ -157,35 +157,35 @@ _core.default.page({
       path: 'welcome'
     };
   }
-}, {info: {"components":{},"on":{}}, handlers: {'25-24': {"input": function proxy () {
+}, {info: {"components":{},"on":{}}, handlers: {'25-40': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-25': {"input": function proxy () {
+  }},'25-41': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-26': {"tap": function proxy () {
+  }},'25-42': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getCaptcha($event)
       })();
     
-  }},'25-27': {"tap": function proxy () {
+  }},'25-43': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {'12': {
+  }}}, models: {'20': {
       type: "input",
       expr: "mobile",
       handler: function set ($v) {
@@ -193,7 +193,7 @@ _core.default.page({
         _vm.mobile = $v;
       
     }
-    },'13': {
+    },'21': {
       type: "input",
       expr: "captcha",
       handler: function set ($v) {

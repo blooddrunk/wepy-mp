@@ -356,4 +356,32 @@ _core.default.page({
         _vm.handleClick($event)
       })();
     
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"simple-list":{"path":"../components/simple-list"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"},"van-toast":{"path":"../$vendor/vant-weapp/lib/toast/index"},"van-dialog":{"path":"../$vendor/vant-weapp/lib/dialog/index"}},"on":{"26-0":["tap"]}}, handlers: {'26-0': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleClick($event)
+      })();
+    
   }}}, models: {} });

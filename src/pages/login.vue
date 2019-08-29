@@ -41,8 +41,8 @@
         </span>
       </div>
 
-      <div v-if="error" class="tw-mt-4 tw-text-xs tw-text-red-500">
-        {{ error }}
+      <div class="tw-mt-4 tw-text-xs tw-text-red-500" style="height: 2rem; line-height: 2rem;">
+        {{ error ? error : '' }}
       </div>
 
       <button
@@ -91,10 +91,10 @@ wepy.page({
     checkCaptcha() {
       if (!trim(this.captcha)) {
         this.error = '请输入验证码';
-        return true;
+        return false;
       }
 
-      return false;
+      return true;
     },
 
     async getCaptcha() {
@@ -131,7 +131,7 @@ wepy.page({
           captcha: this.captcha,
         };
 
-        console.log(playload);
+        console.log(payload);
 
         wepy.wx.navigateTo({
           url: 'user-home',

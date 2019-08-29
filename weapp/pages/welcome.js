@@ -450,4 +450,60 @@ _core.default.page({
         _vm.handleLogin($event)
       })();
     
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-8":["getphonenumber"],"24-9":["tap"]}}, handlers: {'24-8': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-9': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-8":["getphonenumber"],"24-9":["tap"]}}, handlers: {'24-8': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-9': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-8":["getphonenumber"],"24-9":["tap"]}}, handlers: {'24-8': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-9': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
+  }}}, models: {} }, {info: {"components":{"logo":{"path":"../components/logo"},"van-button":{"path":"../$vendor/vant-weapp/lib/button/index"}},"on":{"24-8":["getphonenumber"],"24-9":["tap"]}}, handlers: {'24-8': {"getphonenumber": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.getPhoneNumber($event)
+      })();
+    
+  }},'24-9': {"tap": function proxy () {
+    var $event = arguments[arguments.length - 1];
+    var _vm=this;
+      return (function () {
+        _vm.handleLogin($event)
+      })();
+    
   }}}, models: {} });
