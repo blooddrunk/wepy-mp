@@ -3,6 +3,7 @@
     pages: [
       'pages/welcome',
       'pages/login',
+      'pages/user-home',
       'pages/index'
     ],
     window: {

@@ -1,0 +1,2 @@
+.user-home .with-border-right{border-right-width:1px;border-right-style:solid;border-right-color:#fff}@media (min-resolution: 2dppx){.user-home .with-border-right{border-right-width:0.5px}}@media (min-resolution: 3dppx){.user-home .with-border-right{border-right-width:0.33333333px}}@media (min-resolution: 4dppx){.user-home .with-border-right{border-right-width:0.25px}}
+

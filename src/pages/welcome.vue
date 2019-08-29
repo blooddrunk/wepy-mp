@@ -63,6 +63,9 @@ wepy.page({
   methods: {
     getPhoneNumber(event) {
       console.log(event);
+      wepy.wx.navigateTo({
+        url: 'user-home',
+      });
     },
 
     handleLogin() {
@@ -78,7 +81,7 @@ wepy.page({
 
   onShareAppMessage() {
     return {
-      path: '/page/welcome',
+      path: 'welcome',
     };
   },
 });

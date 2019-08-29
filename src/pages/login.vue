@@ -130,13 +130,19 @@ wepy.page({
           mobile: this.mobile,
           captcha: this.captcha,
         };
+
+        console.log(playload);
+
+        wepy.wx.navigateTo({
+          url: 'user-home',
+        });
       }
     },
   },
 
   onShareAppMessage() {
     return {
-      path: '/page/welcome',
+      path: 'welcome',
     };
   },
 });

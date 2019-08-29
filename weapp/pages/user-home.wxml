@@ -1,0 +1,11 @@
+
+<view class="user-home">
+  <view style="height: 30vh; background-image: url(/static/images/bg.jpg);" class="tw-flex tw-flex-col tw-items-center tw-justify-between tw-py-6 tw-bg-cover tw-text-white">
+    <view class="tw-text-sm">账户折合资产（油贝）</view>
+    <view class="tw-p-4 tw-text-5xl">{{ propertyNum }}</view>
+    <view class="tw-flex tw-items-center tw-px-4 tw-text-base">
+      <view class="tw-px-4 with-border-right">{{ displayUserID }}</view>
+      <view class="tw-px-4">{{ displayBelong }}</view>
+    </view>
+  </view>
+</view>

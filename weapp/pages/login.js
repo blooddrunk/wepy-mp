@@ -130,6 +130,11 @@ _core.default.page({
                     mobile: this.mobile,
                     captcha: this.captcha
                   };
+                  console.log(playload);
+
+                  _core.default.wx.navigateTo({
+                    url: 'user-home'
+                  });
                 }
 
               case 1:
@@ -149,38 +154,38 @@ _core.default.page({
   },
   onShareAppMessage: function onShareAppMessage() {
     return {
-      path: '/page/welcome'
+      path: 'welcome'
     };
   }
-}, {info: {"components":{},"on":{}}, handlers: {'25-12': {"input": function proxy () {
+}, {info: {"components":{},"on":{}}, handlers: {'25-24': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-13': {"input": function proxy () {
+  }},'25-25': {"input": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.clearError($event)
       })();
     
-  }},'25-14': {"tap": function proxy () {
+  }},'25-26': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.getCaptcha($event)
       })();
     
-  }},'25-15': {"tap": function proxy () {
+  }},'25-27': {"tap": function proxy () {
     var $event = arguments[arguments.length - 1];
     var _vm=this;
       return (function () {
         _vm.handleLogin($event)
       })();
     
-  }}}, models: {'6': {
+  }}}, models: {'12': {
       type: "input",
       expr: "mobile",
       handler: function set ($v) {
@@ -188,51 +193,7 @@ _core.default.page({
         _vm.mobile = $v;
       
     }
-    },'7': {
-      type: "input",
-      expr: "captcha",
-      handler: function set ($v) {
-      var _vm=this;
-        _vm.captcha = $v;
-      
-    }
-    }} }, {info: {"components":{},"on":{}}, handlers: {'25-12': {"input": function proxy () {
-    var $event = arguments[arguments.length - 1];
-    var _vm=this;
-      return (function () {
-        _vm.clearError($event)
-      })();
-    
-  }},'25-13': {"input": function proxy () {
-    var $event = arguments[arguments.length - 1];
-    var _vm=this;
-      return (function () {
-        _vm.clearError($event)
-      })();
-    
-  }},'25-14': {"tap": function proxy () {
-    var $event = arguments[arguments.length - 1];
-    var _vm=this;
-      return (function () {
-        _vm.getCaptcha($event)
-      })();
-    
-  }},'25-15': {"tap": function proxy () {
-    var $event = arguments[arguments.length - 1];
-    var _vm=this;
-      return (function () {
-        _vm.handleLogin($event)
-      })();
-    
-  }}}, models: {'6': {
-      type: "input",
-      expr: "mobile",
-      handler: function set ($v) {
-      var _vm=this;
-        _vm.mobile = $v;
-      
-    }
-    },'7': {
+    },'13': {
       type: "input",
       expr: "captcha",
       handler: function set ($v) {
